@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<falang type="contentelement">
+  <name>aiContactSafe - Profiles</name>
+  <author>Alex Dobrin</author>
+  <version>1.0.0</version>
+  <description>Definition for the profiles of aiContactSafe</description>
+  <copyright>www.algisinfo.com</copyright>
+  <reference>
+  	<table name="aicontactsafe_profiles">
+  		<field type="referenceid" name="id" translate="0">ID</field>
+  		<field type="titletext" name="name" length="150" translate="1" >Name</field>
+  		<field type="text" name="custom_date_format" length="50" translate="1">Custom date format</field>
+		<field type="text" name="redirect_on_success" length="150" translate="1">URL to redirect on success</field>
+		<field type="modified_date" name="last_update" translate="0">Last update</field>
+  	</table>
+  </reference>
+</falang>

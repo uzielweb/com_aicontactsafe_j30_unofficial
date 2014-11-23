@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.18" method="upgrade">
+	<name>aiContactSafe</name>
+	<author>Algis Info Grup SRL</author>
+	<creationDate>April 2010</creationDate>
+	<copyright>(c)2010 Algis Info Grup SRL. All rights reserved.</copyright>
+	<authorEmail>contact@algis.ro</authorEmail>
+	<authorUrl>www.algis.ro</authorUrl>
+	<version>2.0.21c.stable</version>
+	<license>GNU/GPL License - http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<description>A contact form in which you can add any number of custom fields.</description>
+
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install.aicontactsafe.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">uninstall.aicontactsafe.sql</file>
+		</sql>
+	</uninstall>
+
+	<installfile>install.aicontactsafe.php</installfile>
+	<uninstallfile>uninstall.aicontactsafe.php</uninstallfile>
+
+	<files folder="component">
+		<filename>aicontactsafe.php</filename>
+		<filename>index.html</filename>
+		<folder>controllers</folder>
+		<folder>includes</folder>
+		<folder>languages</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+	</files>
+	<languages folder="component/languages">
+		<language tag="ar-AA">ar-AA.com_aicontactsafe.ini</language>
+		<language tag="bg-BG">bg-BG.com_aicontactsafe.ini</language>
+		<language tag="cs-CZ">cs-CZ.com_aicontactsafe.ini</language>
+		<language tag="da-DK">da-DK.com_aicontactsafe.ini</language>
+		<language tag="de-DE">de-DE.com_aicontactsafe.ini</language>
+		<language tag="el-GR">el-GR.com_aicontactsafe.ini</language>
+		<language tag="en-GB">en-GB.com_aicontactsafe.ini</language>
+		<language tag="es-ES">es-ES.com_aicontactsafe.ini</language>
+		<language tag="fr-FR">fr-FR.com_aicontactsafe.ini</language>
+		<language tag="hu-HU">hu-HU.com_aicontactsafe.ini</language>
+		<language tag="it-IT">it-IT.com_aicontactsafe.ini</language>
+		<language tag="lt-LT">lt-LT.com_aicontactsafe.ini</language>
+		<language tag="nl-NL">nl-NL.com_aicontactsafe.ini</language>
+		<language tag="pl-PL">pl-PL.com_aicontactsafe.ini</language>
+		<language tag="pt-BR">pt-BR.com_aicontactsafe.ini</language>
+		<language tag="pt-PT">pt-PT.com_aicontactsafe.ini</language>
+		<language tag="ro-RO">ro-RO.com_aicontactsafe.ini</language>
+		<language tag="ru-RU">ru-RU.com_aicontactsafe.ini</language>
+		<language tag="sk-SK">sk-SK.com_aicontactsafe.ini</language>
+		<language tag="sr-RS">sr-RS.com_aicontactsafe.ini</language>
+		<language tag="sv-SE">sv-SE.com_aicontactsafe.ini</language>
+		<language tag="tr-TR">tr-TR.com_aicontactsafe.ini</language>
+		<language tag="uk-UA">uk-UA.com_aicontactsafe.ini</language>
+	</languages>
+	<administration>
+		<menu img="components/com_aicontactsafe/images/aicontactsafe_icon.gif">COM_AICONTACTSAFE</menu>
+		<submenu>
+			<menu img="components/com_aicontactsafe/images/aicontactsafe_icon.gif" link="option=com_aicontactsafe&amp;sTask=messages">COM_AICONTACTSAFE_MESSAGES</menu>
+			<menu img="components/com_aicontactsafe/images/aicontactsafe_icon.gif" link="option=com_aicontactsafe&amp;sTask=attachments">COM_AICONTACTSAFE_ATTACHMENTS</menu>
+			<menu img="components/com_aicontactsafe/images/aicontactsafe_icon.gif" link="option=com_aicontactsafe&amp;sTask=profiles">COM_AICONTACTSAFE_PROFILES</menu>
+			<menu img="components/com_aicontactsafe/images/aicontactsafe_icon.gif" link="option=com_aicontactsafe&amp;sTask=fields">COM_AICONTACTSAFE_FIELDS</menu>
+			<menu img="components/com_aicontactsafe/images/aicontactsafe_icon.gif" link="option=com_aicontactsafe&amp;sTask=statuses">COM_AICONTACTSAFE_STATUSES</menu>
+			<menu img="components/com_aicontactsafe/images/aicontactsafe_icon.gif" link="option=com_aicontactsafe&amp;sTask=control_panel">COM_AICONTACTSAFE_CONTROL_PANEL</menu>
+			<menu img="components/com_aicontactsafe/images/aicontactsafe_icon.gif" link="option=com_aicontactsafe&amp;sTask=about">COM_AICONTACTSAFE_ABOUT</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>aicontactsafe.php</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>install.aicontactsafe.sql</filename>
+			<filename>uninstall.aicontactsafe.sql</filename>
+			<folder>controllers</folder>
+			<folder>images</folder>
+			<folder>includes</folder>
+			<folder>languages</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+		</files>
+		<languages folder="admin/languages">
+			<language tag="ar-AA">ar-AA.com_aicontactsafe.ini</language>
+			<language tag="ar-AA">ar-AA.com_aicontactsafe.menu.ini</language>
+			<language tag="ar-AA">ar-AA.com_aicontactsafe.sys.ini</language>
+			<language tag="bg-BG">bg-BG.com_aicontactsafe.ini</language>
+			<language tag="bg-BG">bg-BG.com_aicontactsafe.menu.ini</language>
+			<language tag="bg-BG">bg-BG.com_aicontactsafe.sys.ini</language>
+			<language tag="cs-CZ">cs-CZ.com_aicontactsafe.ini</language>
+			<language tag="cs-CZ">cs-CZ.com_aicontactsafe.menu.ini</language>
+			<language tag="cs-CZ">cs-CZ.com_aicontactsafe.sys.ini</language>
+			<language tag="da-DK">da-DK.com_aicontactsafe.ini</language>
+			<language tag="da-DK">da-DK.com_aicontactsafe.menu.ini</language>
+			<language tag="da-DK">da-DK.com_aicontactsafe.sys.ini</language>
+			<language tag="de-DE">de-DE.com_aicontactsafe.ini</language>
+			<language tag="de-DE">de-DE.com_aicontactsafe.menu.ini</language>
+			<language tag="de-DE">de-DE.com_aicontactsafe.sys.ini</language>
+			<language tag="el-GR">el-GR.com_aicontactsafe.ini</language>
+			<language tag="el-GR">el-GR.com_aicontactsafe.menu.ini</language>
+			<language tag="el-GR">el-GR.com_aicontactsafe.sys.ini</language>
+			<language tag="en-GB">en-GB.com_aicontactsafe.ini</language>
+			<language tag="en-GB">en-GB.com_aicontactsafe.menu.ini</language>
+			<language tag="en-GB">en-GB.com_aicontactsafe.sys.ini</language>
+			<language tag="es-ES">es-ES.com_aicontactsafe.ini</language>
+			<language tag="es-ES">es-ES.com_aicontactsafe.menu.ini</language>
+			<language tag="es-ES">es-ES.com_aicontactsafe.sys.ini</language>
+			<language tag="fr-FR">fr-FR.com_aicontactsafe.ini</language>
+			<language tag="fr-FR">fr-FR.com_aicontactsafe.menu.ini</language>
+			<language tag="fr-FR">fr-FR.com_aicontactsafe.sys.ini</language>
+			<language tag="hu-HU">hu-HU.com_aicontactsafe.ini</language>
+			<language tag="hu-HU">hu-HU.com_aicontactsafe.menu.ini</language>
+			<language tag="hu-HU">hu-HU.com_aicontactsafe.sys.ini</language>
+			<language tag="it-IT">it-IT.com_aicontactsafe.ini</language>
+			<language tag="it-IT">it-IT.com_aicontactsafe.menu.ini</language>
+			<language tag="it-IT">it-IT.com_aicontactsafe.sys.ini</language>
+			<language tag="lt-LT">lt-LT.com_aicontactsafe.ini</language>
+			<language tag="lt-LT">lt-LT.com_aicontactsafe.menu.ini</language>
+			<language tag="lt-LT">lt-LT.com_aicontactsafe.sys.ini</language>
+			<language tag="nl-NL">nl-NL.com_aicontactsafe.ini</language>
+			<language tag="nl-NL">nl-NL.com_aicontactsafe.menu.ini</language>
+			<language tag="nl-NL">nl-NL.com_aicontactsafe.sys.ini</language>
+			<language tag="pl-PL">pl-PL.com_aicontactsafe.ini</language>
+			<language tag="pl-PL">pl-PL.com_aicontactsafe.menu.ini</language>
+			<language tag="pl-PL">pl-PL.com_aicontactsafe.sys.ini</language>
+			<language tag="pt-BR">pt-BR.com_aicontactsafe.ini</language>
+			<language tag="pt-BR">pt-BR.com_aicontactsafe.menu.ini</language>
+			<language tag="pt-BR">pt-BR.com_aicontactsafe.sys.ini</language>
+			<language tag="pt-PT">pt-PT.com_aicontactsafe.ini</language>
+			<language tag="pt-PT">pt-PT.com_aicontactsafe.menu.ini</language>
+			<language tag="pt-PT">pt-PT.com_aicontactsafe.sys.ini</language>
+			<language tag="ro-RO">ro-RO.com_aicontactsafe.ini</language>
+			<language tag="ro-RO">ro-RO.com_aicontactsafe.menu.ini</language>
+			<language tag="ro-RO">ro-RO.com_aicontactsafe.sys.ini</language>
+			<language tag="ru-RU">ru-RU.com_aicontactsafe.ini</language>
+			<language tag="ru-RU">ru-RU.com_aicontactsafe.menu.ini</language>
+			<language tag="ru-RU">ru-RU.com_aicontactsafe.sys.ini</language>
+			<language tag="sk-SK">sk-SK.com_aicontactsafe.ini</language>
+			<language tag="sk-SK">sk-SK.com_aicontactsafe.menu.ini</language>
+			<language tag="sk-SK">sk-SK.com_aicontactsafe.sys.ini</language>
+			<language tag="sr-RS">sr-RS.com_aicontactsafe.ini</language>
+			<language tag="sr-RS">sr-RS.com_aicontactsafe.menu.ini</language>
+			<language tag="sr-RS">sr-RS.com_aicontactsafe.sys.ini</language>
+			<language tag="sv-SE">sv-SE.com_aicontactsafe.ini</language>
+			<language tag="sv-SE">sv-SE.com_aicontactsafe.menu.ini</language>
+			<language tag="sv-SE">sv-SE.com_aicontactsafe.sys.ini</language>
+			<language tag="tr-TR">tr-TR.com_aicontactsafe.ini</language>
+			<language tag="tr-TR">tr-TR.com_aicontactsafe.menu.ini</language>
+			<language tag="tr-TR">tr-TR.com_aicontactsafe.sys.ini</language>
+			<language tag="uk-UA">uk-UA.com_aicontactsafe.ini</language>
+			<language tag="uk-UA">uk-UA.com_aicontactsafe.menu.ini</language>
+			<language tag="uk-UA">uk-UA.com_aicontactsafe.sys.ini</language>
+		</languages>
+	</administration>
+</install>

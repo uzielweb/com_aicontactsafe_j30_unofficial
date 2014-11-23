@@ -1,0 +1,63 @@
+/**
+ * @version     $Id$ 2.0.9 0
+ * @package     Joomla
+ * @copyright   Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @license     GNU/GPL, see LICENSE.php
+ */
+
+input#filter_string {
+	width:200px;
+}
+td.key {
+	width:260px;
+	text-align:right;
+}
+td.space {
+	width:30px;
+}
+td.value {
+	text-align:left;
+}
+input#name {
+	width:200px;
+}
+
+input#email_address {
+	width:200px;
+}
+input#subject_prefix {
+	width:200px;
+}
+input#captcha_colors {
+	width:300px;
+}
+
+input#required_field_mark, input#thank_you_message, input#redirect_on_success, input#required_field_notification {
+	width:400px;
+}
+
+table#select_fields input.order_fields {
+	text-align:right;
+	width:25px;
+}
+
+td.up_order_fields, td.down_order_fields {
+	width:16px;
+}
+
+table#edit_css {
+	width:100%;
+}
+#profile_css_code {
+	width:100%;
+	height:auto;
+	overflow:scroll;
+}
+table#edit_email {
+	width:100%;
+}
+#mail_template {
+	width:100%;
+	height:auto;
+	overflow:scroll;
+}

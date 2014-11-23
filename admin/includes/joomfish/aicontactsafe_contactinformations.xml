@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<joomfish type="contentelement">
+	<name>aiContactSafe - Other</name>
+	<author>Algis Info</author>
+	<version>1.0.0</version>
+	<description>Definition for the contact information of aiContactSafe</description>
+	<reference type="content">
+		<table name="aicontactsafe_contactinformations">
+			<field type="referenceid" name="id" translate="0">ID</field>
+			<field type="titletext" name="info_label" translate="1">Key</field>
+	  		<field type="htmltext" name="info_value" translate="1">Value</field>
+		</table>
+	</reference>
+</joomfish>

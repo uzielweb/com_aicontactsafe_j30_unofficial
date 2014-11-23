@@ -1,0 +1,124 @@
+/**
+ * @version     $Id$ 2.0.0 0
+ * @package     Joomla
+ * @copyright   Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @license     GNU/GPL, see LICENSE.php
+ */
+
+input#filter_string, input#filter_email, input#filter_subject {
+	width:150px;
+}
+td.key {
+	width:100px;
+	text-align:right;
+}
+td.space {
+	width:30px;
+}
+td.value {
+	text-align:left;
+}
+input#name {
+	width:200px;
+}
+input#reply_email_address, input#reply_subject {
+	width:300px;
+}
+
+/* front-end table admin */
+table.adminlist {
+	width: 100%;
+	border-spacing: 1px;
+	background-color: #e7e7e7;
+	color: #666;
+}
+
+table.adminlist td,
+table.adminlist th { padding: 4px; }
+
+table.adminlist thead th {
+	text-align: center;
+	background: #f0f0f0;
+	color: #666;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #fff;
+}
+
+table.adminlist thead a:hover { text-decoration: none; }
+
+table.adminlist thead th img { vertical-align: middle; }
+
+table.adminlist tbody th { font-weight: bold; }
+
+table.adminlist tbody tr			{ background-color: #fff;  text-align: left; }
+table.adminlist tbody tr.row1 	{ background: #f9f9f9; border-top: 1px solid #fff; }
+
+table.adminlist tbody tr.row0:hover td,
+table.adminlist tbody tr.row1:hover td  { background-color: #ffd ; }
+
+table.adminlist tbody tr td 	   { height: 25px; background: #fff; border: 1px solid #fff; }
+table.adminlist tbody tr.row1 td { background: #f9f9f9; border-top: 1px solid #FFF; }
+
+table.adminlist tfoot tr { text-align: center;  color: #333; }
+table.adminlist tfoot td,
+table.adminlist tfoot th { background-color: #f3f3f3; border-top: 1px solid #999; text-align: center; }
+
+table.adminlist td.order 		{ text-align: center; white-space: nowrap; }
+table.adminlist td.order span { float: left; display: block; width: 20px; text-align: center; }
+
+#changeStatus { margin-bottom:20px }
+
+/** aiContactSafe toolbar buttons **/
+
+div#aicontactsafe_toolbar .toolbar {
+	float:right;
+}
+div#aicontactsafe_toolbar ul {
+	list-style:none;
+}
+div#aicontactsafe_toolbar .button {
+	width:auto;
+	text-align:center;
+}
+div#aicontactsafe_toolbar .button a {
+	display:block;
+	padding:0px 4px;
+	margin:0px;
+	vertical-align:bottom;
+	border:1px solid #FFF;
+}
+div#aicontactsafe_toolbar .button a:hover {
+	border-left: 1px solid #eee;
+	border-top: 1px solid #eee;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	text-decoration: none;
+}
+div#aicontactsafe_toolbar .button a span { float: none; width: 32px; height: 32px; margin: 4px auto; display: block; }
+.icon-32-view_ai {
+	background:url(../../../../../administrator/components/com_aicontactsafe/images/view.gif) top center no-repeat;
+}
+.icon-32-delete_ai { 
+	background:url(../../../../../administrator/components/com_aicontactsafe/images/delete.gif) top center no-repeat;
+}
+.icon-32-delete_all_ai { 
+	background:url(../../../../../administrator/components/com_aicontactsafe/images/delete_all.gif) top center no-repeat;
+}
+.icon-32-save_ai { 
+	background:url(../../../../../administrator/components/com_aicontactsafe/images/save.gif) top center no-repeat;
+}
+.icon-32-apply_ai { 
+	background:url(../../../../../administrator/components/com_aicontactsafe/images/apply.gif) top center no-repeat;
+}
+.icon-32-cancel_ai { 
+	background:url(../../../../../administrator/components/com_aicontactsafe/images/cancel.gif) top center no-repeat;
+}
+.icon-32-ban_ip_ai { 
+	background:url(../../../../../administrator/components/com_aicontactsafe/images/ban_ip.gif) top center no-repeat;
+}
+.icon-32-reply_ai { 
+	background:url(../../../../../administrator/components/com_aicontactsafe/images/reply.gif) top center no-repeat;
+}
+.icon-32-export_ai { 
+	background:url(../../../../../administrator/components/com_aicontactsafe/images/export.gif) top center no-repeat;
+}

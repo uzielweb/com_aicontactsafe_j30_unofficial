@@ -1,0 +1,57 @@
+/**
+ * @version     $Id$ 2.0.0 0
+ * @package     Joomla
+ * @copyright   Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @license     GNU/GPL, see LICENSE.php
+ */
+
+td.key {
+	width:250px;
+	text-align:right;
+}
+td.space {
+	width:15px;
+}
+td.value {
+	text-align:left;
+}
+
+input#redirect_ips {
+	width:350px;
+}
+
+input#upload_attachments {
+	width:350px;
+}
+
+input#attachments_types {
+	width:250px;
+}
+
+div#confirmation_message {
+	font-size:16px;
+	color:#FF0000;
+}
+
+input#editbox_cols, input#editbox_rows {
+	width:40px;
+}
+
+input#default_name, input#default_email, input#default_subject {
+	width:250px;
+}
+
+input#maximum_messages_ban_ip, input#maximum_minutes_ban_ip {
+	width:40px;
+}
+
+input#email_ban_ip {
+	width:250px;
+}
+
+table#control_panel input, table#control_panel button {
+	float:none !important;
+}
+table#control_panel td {
+	vertical-align:middle;
+}

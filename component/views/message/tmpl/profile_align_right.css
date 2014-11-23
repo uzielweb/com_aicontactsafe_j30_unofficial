@@ -1,0 +1,184 @@
+/* 
+	align - right
+	make sure you have the corect aiContactSafe_mainbody_1 set everywhere on this CSS code
+	the number following aiContactSafe_mainbody_ is the id of the profile
+	if not properly set, the changes affecting this tag will not take effect
+*/
+
+/* modify the width to fit all the fields */
+div#aiContactSafe_mainbody_1 div.aiContactSafe_contact_form_field_right, div#aiContactSafe_mainbody_1 div.aiContactSafe_contact_form_field_label_right {
+	width:380px;
+	text-align:right;
+}
+
+/* display into the center of the page */
+div#aiContactSafe_mainbody_1 {
+	margin-left:auto;
+	margin-right:auto;
+	text-align:right;
+}
+
+/* force labels to be displayed inline */
+div#aiContactSafe_mainbody_1 label { display:inline-block !important; }
+
+/*
+
+set the width of some of the fields
+add here any of the fields of aiContactSafe
+replace "field_name" with the name of the field for which you want to set the width
+
+// Textbox
+		div#aiContactSafe_mainbody_1 input#field_name
+// Combobox
+		div#aiContactSafe_mainbody_1 select#field_name
+// Editbox
+		div#aiContactSafe_mainbody_1 textarea#field_name
+// Checkbox - List
+		div#aiContactSafe_mainbody_1 input.field_name
+// Radio - List
+		div#aiContactSafe_mainbody_1 input.field_name
+// Date
+		can't modify the width
+// Email
+		div#aiContactSafe_mainbody_1 input#field_name
+// Email - List
+		div#aiContactSafe_mainbody_1 select#field_name
+// Joomla Contacts
+		div#aiContactSafe_mainbody_1 select#field_name
+// Joomla Users
+		div#aiContactSafe_mainbody_1 select#field_name
+// SOBI2 Entries
+		div#aiContactSafe_mainbody_1 select#field_name
+// Hidden
+		nothing to set
+// Separator
+		div#aiContactSafe_mainbody_1 div#sp_field_name
+// File
+		only a very complex solution will fix this problem
+// Number
+		div#aiContactSafe_mainbody_1 input#field_name
+// Hidden Email
+		nothing to set
+
+*/
+div#aiContactSafe_mainbody_1 input#aics_name {
+	width:240px;
+}
+div#aiContactSafe_mainbody_1 input#aics_email {
+	width:240px;
+}
+div#aiContactSafe_mainbody_1 input#aics_phone {
+	width:240px;
+}
+div#aiContactSafe_mainbody_1 input#aics_subject {
+	width:240px;
+}
+div#aiContactSafe_mainbody_1 textarea#aics_message {
+	width:240px;
+	height:80px;
+}
+
+/* set the way labels and fields are displayed */
+div#aiContactSafe_mainbody_1 div.aiContactSafe_row {
+	clear:both;
+	float:right;
+	padding:2px 0px;
+}
+div#aiContactSafe_mainbody_1 div.aiContactSafe_contact_form_field_label_left {
+	float:left;
+}
+div#aiContactSafe_mainbody_1 div.aiContactSafe_contact_form_field_right {
+	float:left;
+}
+div#aiContactSafe_mainbody_1 div.aiContactSafe_contact_form_field_right table.aiContactSafe_date {
+	float:right;
+}
+
+div#aiContactSafe_mainbody_1 div.aiContactSafe_contact_form_field_label_right {
+	float:left;
+}
+div#aiContactSafe_mainbody_1 div.aiContactSafe_contact_form_field_left {
+	float:left;
+}
+
+/* center the contact form */
+div#aiContactSafe_mainbody_1 #aiContactSafeForm {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* set the space between the notification for the required fields to the contact form */
+div#aiContactSafe_mainbody_1 div#aiContactSafe_info {
+	margin-bottom:10px;
+}
+
+/* set the div containing the captcha */
+div#aiContactSafe_mainbody_1 div#div_captcha {
+	clear:both;
+	margin:5px 0px;
+	padding-top:10px;
+}
+div#aiContactSafe_mainbody_1 div#div_captcha div {
+	float:right;
+	clear:both;
+}
+div#aiContactSafe_mainbody_1 div#div_captcha_info {
+	margin-bottom:5px;
+}
+
+/* set the way the text counting the characters in the edit box */
+div#aiContactSafe_mainbody_1 div.countdown_div {
+	font-size:9px;
+}
+div#aiContactSafe_mainbody_1 input.countdown_editbox {
+	font-size:9px;
+	text-align:center;
+	border:none;
+	overflow:visible;
+	background:transparent;
+}
+
+/* set the cells containig the contact form and the contact information */
+div#aiContactSafe_mainbody_1 table#aiContactSafeForm td, div#aiContactSafe_mainbody_1 div#aiContactSafeForm {
+	padding:5px;
+	vertical-align:top;
+}
+
+/* modify the cursor of the labels to let the user know they can click on them */
+div#aiContactSafe_mainbody_1 label {
+	cursor:pointer;
+}
+/* set the label tag containing the character that marks the required fields */
+div#aiContactSafe_mainbody_1 label.required_field {
+	text-align:left;
+	vertical-align:top;
+	margin-left:5px;
+}
+
+/* hide the hidden rows */
+div#aiContactSafe_mainbody_1 div.aiContactSafe_row_hidden {
+	display:none;
+}
+
+/* make the buttons higher */
+div#aiContactSafe_mainbody_1 div#aiContactSafeBtns input {
+	padding:5px;
+	margin:0px;
+}
+
+/* set the way the date is displayed */
+div#aiContactSafe_mainbody_1 table.aiContactSafe_date td {
+	padding:0px 0px 0px 0px;
+	vertical-align:middle;
+}
+div#aiContactSafe_mainbody_1 table.aiContactSafe_date td select {
+	margin:0px 2px 0px 0px;
+}
+
+/* set the space between field sufix and the field and between the field prefix and the field */
+div#aiContactSafe_mainbody_1 span.aiContactSafe_sufix {
+	margin-right:3px;
+}
+div#aiContactSafe_mainbody_1 span.aiContactSafe_prefix {
+	margin-left:3px;
+}

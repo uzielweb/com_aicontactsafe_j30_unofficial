@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Contact Form">
+		<message>
+		</message>
+	</layout>
+	<state>
+		<name>Contact Form</name>
+		<description>Add a new link to an aiContactSafe contact form.</description>
+		<url addpath="/components/com_aicontactsafe/includes/elements">
+			<param name="pf" type="aicontactsafeprofile" default="0" label="Select profile" description="Select the profile id to use in the contact form." />
+		</url>
+		<params>
+			<param name="redirect_on_success" type="text" default="" label="Redirect on success" description="Specify the page to redirect the user when the message is succesfully sent." size="80" />
+		</params>
+	</state>
+	<!-- Add fields to the request variables for the layout. -->
+	<fields name="request">
+		<fieldset name="request"
+			addfieldpath="/components/com_aicontactsafe/includes/elements">
+
+			<field name="pf" type="aicontactsafeprofile"
+				label="Select profile"
+				required="false"
+				description="Select the profile id to use in the contact form."
+			/>
+			<field name="redirect_on_success" type="text" default="" label="Redirect on success" description="Specify the page to redirect the user when the message is succesfully sent." size="80" />
+		</fieldset>
+	</fields>
+</metadata>
