@@ -1,0 +1,143 @@
+/**
+ * @version     $Id$ 2.0.9 0
+ * @package     Joomla
+ * @copyright   Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @license     GNU/GPL, see LICENSE.php
+ */
+
+/** aiContactSafe toolbar buttons **/
+
+.icon-48-generic_ai { 
+	background-image: url(../../images/aicontactsafe.gif);
+}
+.icon-32-add_ai { 
+	background-image: url(../../images/add.gif);
+}
+.icon-32-view_ai { 
+	background-image: url(../../images/view.gif);
+}
+.icon-32-edit_ai { 
+	background-image: url(../../images/edit.gif);
+}
+.icon-32-delete_ai { 
+	background-image: url(../../images/delete.gif);
+}
+.icon-32-delete_all_ai { 
+	background-image: url(../../images/delete_all.gif);
+}
+.icon-32-copy_ai { 
+	background-image: url(../../images/copy.gif);
+}
+.icon-32-publish_ai { 
+	background-image: url(../../images/publish.gif);
+}
+.icon-32-unpublish_ai { 
+	background-image: url(../../images/unpublish.gif);
+}
+.icon-32-save_ai { 
+	background-image: url(../../images/save.gif);
+}
+.icon-32-apply_ai { 
+	background-image: url(../../images/apply.gif);
+}
+.icon-32-cancel_ai { 
+	background-image: url(../../images/cancel.gif);
+}
+.icon-32-control_panel { 
+	background-image: url(../../images/control_panel.gif);
+}
+.icon-32-report_ai { 
+	background-image: url(../../images/report.gif);
+}
+.icon-32-refresh_ai { 
+	background-image: url(../../images/refresh.gif);
+}
+.icon-32-ban_ip_ai { 
+	background-image: url(../../images/ban_ip.gif);
+}
+.icon-32-reply_ai { 
+	background-image: url(../../images/reply.gif);
+}
+.icon-32-export_ai { 
+	background-image: url(../../images/export.gif);
+}
+.icon-32-css_ai { 
+	background-image: url(../../images/css.gif);
+}
+.icon-32-email_ai { 
+	background-image: url(../../images/email.gif);
+}
+.icon-32-contact_ai { 
+	background-image: url(../../images/contact.gif);
+}
+.icon-32-favorite_ai { 
+	background-image: url(../../images/favorite.gif);
+}
+
+/** AI version **/
+span#ai_version {
+	font-size:9px;
+}
+
+/** Help instructions **/
+table#aicontactsafe_with_help td#aicontactsafe_main {
+	vertical-align:top;
+}
+table#aicontactsafe_with_help td#aicontactsafe_main div#aicontactsafe_main {
+	width:100%;
+}
+table#aicontactsafe_with_help td#aicontactsafe_help {
+	vertical-align:top;
+	text-align:justify;
+	text-indent:15px;
+	width:280px;
+}
+table#aicontactsafe_with_help td#aicontactsafe_help div#aicontactsafe_help {
+	width:270px;
+	padding:5px;
+}
+table#aicontactsafe_with_help td#aicontactsafe_help div#aicontactsafe_help p {
+	margin:0px;
+	padding:0px;
+}
+div#aiContactSafe_help_footer {
+	font-size:9px;
+	text-indent:0px;
+}
+
+/* Calendar */
+div.calendar .button {
+	color:#fff;
+	font-size:11px;
+	font-weight:bold;
+	margin:0px 0px 0px 0px;
+	padding:2px;
+	background:none;
+	width:auto;
+	text-transform:none;
+	text-align:center;
+	border:none;
+	cursor:pointer;
+	overflow:visible;
+	display:table-cell;
+}
+
+/* Sort image */
+table.adminlist img {
+	margin-left:3px;
+}
+
+div.ip_banned {
+	color:#FF0000;
+	font-weight:bold;
+	float:right;
+}
+
+/* Align labels and fields buttons */
+table#aiContactSafe_align_label_and_fields img {
+	margin-right:10px;
+}
+
+div.edit_other_fields { display:block; float:none !important; clear:both !important; text-align:center; }
+div.edit_other_fields br { display:block; float:none !important; clear:both !important; text-align:center; height:1px; line-height:1px; }
+div.edit_other_fields img { display:inline; float:none !important; clear:both !important; text-align:center; }

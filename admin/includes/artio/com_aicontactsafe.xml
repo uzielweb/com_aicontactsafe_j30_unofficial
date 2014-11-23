@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install version="1.5" type="sef_ext">
+	<name>aiContactSafe</name>
+	<author>Algis Info</author>
+	<creationDate>March 2009</creationDate>
+	<copyright>(c)2009 Algis Info SRL. All rights reserved.</copyright>
+	<license>GNU/GPL License - http://www.gnu.org/copyleft/gpl.html</license>
+	<authorEmail>contact@algis.ro</authorEmail>
+	<authorUrl>www.algis.ro</authorUrl>
+	<version>1.0.0</version>
+	<description>Adds SEO support for aiContactSafe component.</description>
+	<files>
+		<filename sef_ext="aicontactsafe">com_aicontactsafe.php</filename>
+	</files>
+</install>

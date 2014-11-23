@@ -1,0 +1,4 @@
+# Note: Having a .htaccess prevents users from directly
+# accessing the files in your attachments folder
+
+deny from all

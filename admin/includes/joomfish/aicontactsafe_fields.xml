@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<joomfish type="contentelement">
+	<name>aiContactSafe - Fields</name>
+	<author>Algis Info</author>
+	<version>1.0.0</version>
+	<description>Definition for the custom fields of aiContactSafe</description>
+	<reference type="content">
+		<table name="aicontactsafe_fields">
+			<field type="referenceid" name="id" translate="0">ID</field>
+			<field type="titletext" name="field_label" length="150" translate="1">Label</field>
+			<field type="textarea" name="label_parameters" translate="1">Label parameters</field>
+			<field type="text" name="field_label_message" length="150" translate="1">Label in message</field>
+			<field type="textarea" name="label_message_parameters" translate="1">Label in message parameters</field>
+			<field type="text" name="label_after_field" translate="1">To right</field>
+			<field type="text" name="field_type" length="10" maxlength="2" translate="0">Field type</field>
+			<field type="textarea" name="field_parameters" translate="1">Field parameters</field>
+			<field type="textarea" name="field_values" translate="1">Field values</field>
+			<field type="textarea" name="field_sufix" translate="1">Field sufix</field>
+			<field type="textarea" name="field_prefix" translate="1">Field prefix</field>
+			<field type="text" name="default_value" length="150" translate="1">Default value</field>
+			<field type="modified_date" name="last_update" translate="0">Last update</field>
+		</table>
+	</reference>
+</joomfish>
