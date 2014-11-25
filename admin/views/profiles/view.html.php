@@ -96,10 +96,10 @@ class AiContactSafeViewProfiles extends AiContactSafeViewDefault {
 		return $footer;
 	}
 
-// function to initialize the variables used in the template
+// function to initialize the variables used in the template  
 
 	function setVariables() {
-		JHTML::_('behavior.mootools');
+JHtml::_('behavior.framework');
 		parent::setVariables();
 		$model = $this->getModel();
 		if ( $this->_task == 'add' ) {
