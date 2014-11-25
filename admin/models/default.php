@@ -19,7 +19,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport( 'joomla.application.component.model' );
 
 // define the default aiContactSafe model class
-class AiContactSafeModelDefault extends JModel {
+class AiContactSafeModelDefault extends JModelLegacy {
 	// component version
 	var $_version = null;
 	// mainframe (application) reference

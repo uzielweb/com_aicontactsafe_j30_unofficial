@@ -17,7 +17,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.view');
 
 // define the default aiContactSafe view class
-class AiContactSafeViewDefault extends JView {
+class AiContactSafeViewDefault extends JViewLegacy {
 	// component version
 	var $_version = null;
 	// mainframe (application) reference

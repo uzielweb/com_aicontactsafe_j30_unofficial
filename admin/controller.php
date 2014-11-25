@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport( 'joomla.application.component.controller' );
 
 // define the default aiContactSafe controller class
-class AiContactSafeController extends JController {
+class AiContactSafeController extends JControllerLegacy {
 	// component version
 	var $_version = '2.0.21c.stable';
 	// mainframe (application) reference
