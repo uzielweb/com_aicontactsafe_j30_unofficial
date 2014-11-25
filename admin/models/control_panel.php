@@ -272,7 +272,7 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// make sure the folder exists
 
             
-		$att_folder = '/'.$upload_attachments);
+		$att_folder = '/'.$upload_attachments;
 
 		$att_folder = JPATH_ROOT.'/'.$att_folder;
 		// import joomla clases to manage file system
