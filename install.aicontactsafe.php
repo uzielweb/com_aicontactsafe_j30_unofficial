@@ -25,7 +25,7 @@ defined('_JEXEC') or die('Restricted access');
 
 // function called when the component is installed
 function com_install() {
-	$_version = '2.0.21c.stable';
+	$_version = '3 - Unofficial - by Ponto Mega';
 
 	// make sure the sys language file is loaded
 	$lang = JFactory::getLanguage();

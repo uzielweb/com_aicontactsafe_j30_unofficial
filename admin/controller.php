@@ -16,7 +16,7 @@ jimport( 'joomla.application.component.controller' );
 // define the default aiContactSafe controller class
 class AiContactSafeController extends JControllerLegacy {
 	// component version
-	var $_version = '2.0.21c.stable';
+	var $_version = '3 - Unofficial - by Ponto Mega';
 	// mainframe (application) reference
 	var $_app = null;
 	// current task
