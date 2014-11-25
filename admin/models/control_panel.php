@@ -271,7 +271,7 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		}
 		// make sure the folder exists
 
-            
+
 		$att_folder = '/'.$upload_attachments;
 
 		$att_folder = JPATH_ROOT.'/'.$att_folder;
@@ -491,7 +491,7 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 
 		return $return;
 	}
-	
+
 	// function to check if Joom!Fish is installed and the content elements for aiContactSafe are installed
 	// return
 	// - 0 if Joom!Fish is not installed
@@ -649,7 +649,7 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		$query = 'SELECT template FROM `#__templates_menu` where client_id = 0 and ( menuid = 0 or menuid in ( select id from `#__menu` where link like \'%option=com_aicontactsafe%\' ) )';
 		$db->setQuery( $query );
 		$templates = $db->loadResultArray();
-		
+
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
@@ -759,7 +759,7 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 			}
 		}
 		$response .= '</div>';
-		
+
 		return $response;
 	}
 
@@ -767,24 +767,7 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 	function checkAiContactSafeModule() {
 		$return = 0;
 		$xml_file = JPath::clean(JPATH_ROOT.'/'.'modules'.'/'.'mod_aicontactsafe'.'/'.'mod_aicontactsafe.xml');
-		if (is_file($xml_file)) {
-			$xml = JFactory::getXMLParser( 'simple' );
-			$xml->loadFile( $xml_file );
-			$version = $xml->document->getElementByPath( 'version' );
-			$installed_version = $version->data();
-			$xml_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'mod_aicontactsafe'.'/'.'mod_aicontactsafe.xml');
-			if (is_file($xml_file)) {
-				$xml = JFactory::getXMLParser( 'simple' );
-				$xml->loadFile( $xml_file );
-				$version = $xml->document->getElementByPath( 'version' );
-				$current_version = $version->data();
-			}
-			if ( $installed_version == $current_version ) {
-				$return = 2;
-			} else {
-				$return = 1;
-			}
-		}
+
 		return $return;
 	}
 
@@ -796,7 +779,7 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		if ($installed) {
 			// initialize the database
 			$db = JFactory::getDBO();
-	
+
 			// activate the module
 			$query = 'UPDATE #__modules SET published = 1 WHERE module = \'mod_aicontactsafe\'';
 			$db->setQuery( $query );
@@ -810,11 +793,8 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// initialize the database
 		$db = JFactory::getDBO();
 		// get all the templates
-		if(version_compare(JVERSION, '1.6.0', 'ge')) {
 			$query = 'SELECT extension_id FROM #__extensions WHERE element = \'mod_aicontactsafe\'';
-		} else {
-			$query = 'SELECT id FROM #__modules WHERE module = \'mod_aicontactsafe\'';
-		}
+
 		$db->setQuery( $query );
 		$module_id = (int)$db->loadResult();
 		jimport('joomla.installer.installer');
@@ -849,30 +829,9 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 	// function to check if aiContactSafeForm is installed
 	function checkAiContactSafeForm() {
 		$return = 0;
-		if(version_compare(JVERSION, '1.6.0', 'ge')) {
 			$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafeform'.'/'.'aicontactsafeform.xml');
-		} else {
-			$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafeform.xml');
-		}
-		if (is_file($xml_file)) {
-			$xml = JFactory::getXMLParser( 'simple' );
-			$xml->loadFile( $xml_file );
-			$version = $xml->document->getElementByPath( 'version' );
-			$installed_version = $version->data();
-			$xml_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafeform'.'/'.'aicontactsafeform.xml');
-			if (is_file($xml_file)) {
-				$xml = JFactory::getXMLParser( 'simple' );
-				$xml->loadFile( $xml_file );
-				$version = $xml->document->getElementByPath( 'version' );
-				$current_version = $version->data();
-			}
-			if ( $installed_version == $current_version ) {
-				$return = 2;
-			} else {
-				$return = 1;
-			}
-		}
-		return $return;
+
+
 	}
 
 	// function to install aiContactSafeForm
@@ -880,11 +839,8 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 		// copy the correct xml file
-		if(version_compare(JVERSION, '1.6.0', 'ge')) {
 			$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafeform'.'/'.'xml'.'/'.'aicontactsafeform_1_6.ini');
-		} else {
-			$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafeform'.'/'.'xml'.'/'.'aicontactsafeform_1_5.ini');
-		}
+
 		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafeform'.'/'.'aicontactsafeform.xml');
 		JFile::copy($src, $dest);
 		// import the installer
@@ -894,13 +850,10 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		if ($installed) {
 			// initialize the database
 			$db = JFactory::getDBO();
-	
+
 			// activate the plugin
-			if(version_compare(JVERSION, '1.6.0', 'ge')) {
-				$query = 'UPDATE #__extensions SET enabled = 1 WHERE element = \'aicontactsafeform\' and folder = \'content\'';
-			} else {
-				$query = 'UPDATE #__plugins SET published = 1 WHERE element = \'aicontactsafeform\' and folder = \'content\'';
-			}
+					$query = 'UPDATE #__extensions SET enabled = 1 WHERE element = \'aicontactsafeform\' and folder = \'content\'';
+
 			$db->setQuery( $query );
 			$installed = $db->query();
 		}
@@ -913,11 +866,8 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		$db = JFactory::getDBO();
 
 		// get all the templates
-		if(version_compare(JVERSION, '1.6.0', 'ge')) {
 			$query = 'SELECT extension_id FROM #__extensions WHERE element = \'aicontactsafeform\' and folder = \'content\'';
-		} else {
-			$query = 'SELECT id FROM #__plugins WHERE element = \'aicontactsafeform\' and folder = \'content\'';
-		}
+
 		$db->setQuery( $query );
 		$plugin_id = (int)$db->loadResult();
 		jimport('joomla.installer.installer');
@@ -939,30 +889,10 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 	// function to check if aiContactSafeLink is installed
 	function checkAiContactSafeLink() {
 		$return = 0;
-		if(version_compare(JVERSION, '1.6.0', 'ge')) {
+
 			$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafelink'.'/'.'aicontactsafelink.xml');
-		} else {
-			$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafelink.xml');
-		}
-		if (is_file($xml_file)) {
-			$xml = JFactory::getXMLParser( 'simple' );
-			$xml->loadFile( $xml_file );
-			$version = $xml->document->getElementByPath( 'version' );
-			$installed_version = $version->data();
-			$xml_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafelink'.'/'.'aicontactsafelink.xml');
-			if (is_file($xml_file)) {
-				$xml = JFactory::getXMLParser( 'simple' );
-				$xml->loadFile( $xml_file );
-				$version = $xml->document->getElementByPath( 'version' );
-				$current_version = $version->data();
-			}
-			if ( $installed_version == $current_version ) {
-				$return = 2;
-			} else {
-				$return = 1;
-			}
-		}
-		return $return;
+
+	
 	}
 
 	// function to install aiContactSafeLink
@@ -970,11 +900,9 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 		// copy the correct xml file
-		if(version_compare(JVERSION, '1.6.0', 'ge')) {
+
 			$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafelink'.'/'.'xml'.'/'.'aicontactsafelink_1_6.ini');
-		} else {
-			$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafelink'.'/'.'xml'.'/'.'aicontactsafelink_1_5.ini');
-		}
+
 		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafelink'.'/'.'aicontactsafelink.xml');
 		JFile::copy($src, $dest);
 		// import the installer
@@ -984,14 +912,10 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		if ($installed) {
 			// initialize the database
 			$db = JFactory::getDBO();
-	
+
 			// activate the plugin
-			if(version_compare(JVERSION, '1.6.0', 'ge')) {
 				$query = 'UPDATE #__extensions SET enabled = 1 WHERE element = \'aicontactsafelink\' and folder = \'content\'';
-			} else {
-				$query = 'UPDATE #__plugins SET published = 1 WHERE element = \'aicontactsafelink\' and folder = \'content\'';
-			}
-			$db->setQuery( $query );
+				$db->setQuery( $query );
 			$installed = $db->query();
 		}
 		return $installed;
@@ -1003,12 +927,8 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		$db = JFactory::getDBO();
 
 		// get all the templates
-		if(version_compare(JVERSION, '1.6.0', 'ge')) {
 			$query = 'SELECT extension_id FROM #__extensions WHERE element = \'aicontactsafelink\' and folder = \'content\'';
-		} else {
-			$query = 'SELECT id FROM #__plugins WHERE element = \'aicontactsafelink\' and folder = \'content\'';
-		}
-		$db->setQuery( $query );
+			$db->setQuery( $query );
 		$plugin_id = (int)$db->loadResult();
 		jimport('joomla.installer.installer');
 		$installer = JInstaller::getInstance();
