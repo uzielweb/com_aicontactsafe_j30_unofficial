@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
-<install type="component" version="1.5.18" method="upgrade">
+<extension type="component" version="3" method="upgrade">
 	<name>aiContactSafe</name>
 	<author>Algis Info Grup SRL</author>
 	<creationDate>April 2010</creationDate>
@@ -155,4 +155,4 @@
 			<language tag="uk-UA">uk-UA.com_aicontactsafe.sys.ini</language>
 		</languages>
 	</administration>
-</install>
+</extension>
