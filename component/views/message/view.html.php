@@ -75,7 +75,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 	// function to initialize the variables used in the template
 	function setVariables() {
 		if (!$this->returnAjaxForm) {
-			// load the mootools javascript library
+      
 			JHtml::_('behavior.framework', true); // JHtml::_('behavior.mootools'); 
 		}
 

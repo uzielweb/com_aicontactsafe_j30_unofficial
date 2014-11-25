@@ -97,6 +97,7 @@ class AiContactSafeViewProfiles extends AiContactSafeViewDefault {
 	}
 
 // function to initialize the variables used in the template
+
 	function setVariables() {
 		JHTML::_('behavior.mootools');
 		parent::setVariables();

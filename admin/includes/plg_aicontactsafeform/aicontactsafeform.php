@@ -55,8 +55,8 @@ class plgContentAiContactSafeForm extends JPlugin {
 			} else {
 				$document->addScript( JURI::root(true).'/includes/js/joomla.javascript.js');
 			}
-			// load the mootools javascript library
-			JHTML::_('behavior.mootools');
+
+		JHtml::_('behavior.framework');
 			// load the calendar javascript and style
 			JHTML::_('behavior.calendar');
 
