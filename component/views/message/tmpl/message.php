@@ -11,7 +11,8 @@
  * added/fixed in version 2.0.13
  * - added SqueezeBox for aiContactSafe feed-back
  * - added highlighting for fields with errors
- *
+ * 
+ * Modified by NVYush on 03.2014
  */
 
 // no direct access
@@ -20,21 +21,21 @@ defined('_JEXEC') or die('Restricted access');
 switch($this->profile->align_buttons) {
 	case 1:
 		// left
-		$this->buttons = '<div id="aiContactSafeButtons_left" style="clear:both; display:block; width:100%; text-align:left;"><div id="aiContactSafeSend" style="float:left;"><div id="aiContactSafeSend_loading_'.$this->profile->id.'" style="float:left; margin:2px;">&nbsp;</div><input type="submit" id="aiContactSafeSendButton" value="' . JText::_('COM_AICONTACTSAFE_SEND') . '" style="float:left; margin:2px;" /></div>';
+		$this->buttons = '<div id="aiContactSafeButtons_left" style="clear:both; display:block; width:100%; text-align:left;"><div id="aiContactSafeSend" style="float:left;"><div id="aiContactSafeSend_loading_'.$this->profile->id.'" style="float:left; margin:2px;">&nbsp;</div><input class="btn" type="submit" id="aiContactSafeSendButton" value="' . JText::_('COM_AICONTACTSAFE_SEND') . '" style="float:left; margin:2px;" /></div>';
 		if ($this->back_button) {
-			$this->buttons .= '<div id="aiContactSafeBack" style="float:left;"><input type="button" onclick="javascript:document.getElementById(\'adminForm_'.$this->profile->id.'\').elements[\'send_mail\'].value=2;document.getElementById(\'adminForm_'.$this->profile->id.'\').submit();" value="' . JText::_('COM_AICONTACTSAFE_BACK') . '" style="float:left; margin:2px;" /></div>';
+			$this->buttons .= '<div id="aiContactSafeBack" style="float:left;"><input type="button" class="btn" onclick="javascript:document.getElementById(\'adminForm_'.$this->profile->id.'\').elements[\'send_mail\'].value=2;document.getElementById(\'adminForm_'.$this->profile->id.'\').submit();" value="' . JText::_('COM_AICONTACTSAFE_BACK') . '" style="float:left; margin:2px;" /></div>';
 		}
 		$this->buttons .= '</div>';
 		break;
 	case 2:
 		// center
 		$this->buttons = '<div id="aiContactSafeButtons_center" style="clear:both; display:block; text-align:center;">';
-		$this->buttons .= '<table border="0" cellpadding="2" cellspacing="0" style="margin-left:auto; margin-right:auto;">';
+		$this->buttons .= '<table style="border-width:0; padding:2; border-spacing:0; margin-left:auto; margin-right:auto;">';
 		$this->buttons .= '<tr>';
 		$this->buttons .= '<td><div id="aiContactSafeSend_loading_'.$this->profile->id.'">&nbsp;</div></td>';
-		$this->buttons .= '<td id="td_aiContactSafeSendButton"><input type="submit" id="aiContactSafeSendButton" value="' . JText::_('COM_AICONTACTSAFE_SEND') . '" /></td>';
+		$this->buttons .= '<td id="td_aiContactSafeSendButton"><input class="btn" type="submit" id="aiContactSafeSendButton" value="' . JText::_('COM_AICONTACTSAFE_SEND') . '" /></td>';
 		if ($this->back_button) {
-			$this->buttons .= '<td id="td_aiContactSafeBack"><input type="button" onclick="javascript:document.getElementById(\'adminForm_'.$this->profile->id.'\').elements[\'send_mail\'].value=2;document.getElementById(\'adminForm_'.$this->profile->id.'\').submit();" value="' . JText::_('COM_AICONTACTSAFE_BACK') . '" /></td>';
+			$this->buttons .= '<td id="td_aiContactSafeBack"><input class="btn" type="button" onclick="javascript:document.getElementById(\'adminForm_'.$this->profile->id.'\').elements[\'send_mail\'].value=2;document.getElementById(\'adminForm_'.$this->profile->id.'\').submit();" value="' . JText::_('COM_AICONTACTSAFE_BACK') . '" /></td>';
 		}
 		$this->buttons .= '</tr>';
 		$this->buttons .= '</table>';
@@ -44,17 +45,17 @@ switch($this->profile->align_buttons) {
 		// right
 		$this->buttons = '<div id="aiContactSafeButtons_right" style="clear:both; display:block; width:100%; text-align:right;">';
 		if ($this->back_button) {
-			$this->buttons .= '<div id="aiContactSafeBack" style="float:right;"><input type="button" onclick="javascript:document.getElementById(\'adminForm_'.$this->profile->id.'\').elements[\'send_mail\'].value=2;document.getElementById(\'adminForm_'.$this->profile->id.'\').submit();" value="' . JText::_('COM_AICONTACTSAFE_BACK') . '" style="float:right; margin:2px;" /></div>';
+			$this->buttons .= '<div id="aiContactSafeBack" style="float:right;"><input class="btn" type="button" onclick="javascript:document.getElementById(\'adminForm_'.$this->profile->id.'\').elements[\'send_mail\'].value=2;document.getElementById(\'adminForm_'.$this->profile->id.'\').submit();" value="' . JText::_('COM_AICONTACTSAFE_BACK') . '" style="float:right; margin:2px;" /></div>';
 		}
-		$this->buttons .= '<div id="aiContactSafeSend" style="float:right;"><input type="submit" id="aiContactSafeSendButton" value="' . JText::_('COM_AICONTACTSAFE_SEND') . '" style="float:right; margin:2px;" /><div id="aiContactSafeSend_loading_'.$this->profile->id.'" style="float:right; margin:2px;">&nbsp;</div></div>';
+		$this->buttons .= '<div id="aiContactSafeSend" style="float:right;"><input class="btn" type="submit" id="aiContactSafeSendButton" value="' . JText::_('COM_AICONTACTSAFE_SEND') . '" style="float:right; margin:2px;" /><div id="aiContactSafeSend_loading_'.$this->profile->id.'" style="float:right; margin:2px;">&nbsp;</div></div>';
 		$this->buttons .= '</div>';
 		break;
 	case 0:
 	default :
 		// none
-		$this->buttons = '<div id="aiContactSafeSend"><div id="aiContactSafeSend_loading_'.$this->profile->id.'">&nbsp;</div><input type="submit" id="aiContactSafeSendButton" value="' . JText::_('COM_AICONTACTSAFE_SEND') . '" /></div>';
+		$this->buttons = '<div id="aiContactSafeSend"><div id="aiContactSafeSend_loading_'.$this->profile->id.'">&nbsp;</div><input class="btn" type="submit" id="aiContactSafeSendButton" value="' . JText::_('COM_AICONTACTSAFE_SEND') . '" /></div>';
 		if ($this->back_button) {
-			$this->buttons .= '<div id="aiContactSafeBack"><input type="button" onclick="javascript:document.getElementById(\'adminForm_'.$this->profile->id.'\').elements[\'send_mail\'].value=2;document.getElementById(\'adminForm_'.$this->profile->id.'\').submit();" value="' . JText::_('COM_AICONTACTSAFE_BACK') . '" /></div>';
+			$this->buttons .= '<div id="aiContactSafeBack"><input class="btn" type="button" onclick="javascript:document.getElementById(\'adminForm_'.$this->profile->id.'\').elements[\'send_mail\'].value=2;document.getElementById(\'adminForm_'.$this->profile->id.'\').submit();" value="' . JText::_('COM_AICONTACTSAFE_BACK') . '" /></div>';
 		}
 		break;
 }
@@ -133,14 +134,14 @@ function writeContactForm( $_this ) {
 		?>
 		</div>
 		<?php if ($_this->returnAjaxForm) { ?>
-			<br clear="all" />
+			<br style="clear:all;" />
 		<?php } else { ?>
 			</div>
-			<br clear="all" />
+			<br style="clear:all;" />
 			<?php $_this->writeCaptcha(); ?>
-			<br clear="all" />
+			<br style="clear:all;" />
 			<div id="aiContactSafeBtns"><?php echo $_this->buttons; ?></div>
-			<br clear="all" />
+			<br style="clear:all;" />
 		<?php
 			// footer of the adminForm
 			// don't remove this line
@@ -173,11 +174,11 @@ if ($this->returnAjaxForm) {
 	switch($this->profile->display_format) {
 		case 1 :
 	?>
-			<table id="aiContactSafeForm" border="0" cellpadding="0" cellspacing="5">
-				<tr><td valign="top" <?php echo $this->profile->contact_info_width>0?'style="width:'.$this->profile->contact_info_width.';"':''; ?> ><?php echo $this->contactinformations['contact_info']; ?></td></tr>
+			<table id="aiContactSafeForm" style="border-width:0; padding:0; border-spacing:5;">
+				<tr><td style="vertical-align:top;" <?php echo $this->profile->contact_info_width>0?'style="width:'.$this->profile->contact_info_width.';"':''; ?> ><?php echo $this->contactinformations['contact_info']; ?></td></tr>
 				<tr>
-					<td valign="top" <?php echo $this->profile->contact_form_width>0?'style="width:'.$this->profile->contact_form_width.';"':''; ?> >
-						<br clear="all" />
+					<td style="vertical-align:top;" <?php echo $this->profile->contact_form_width>0?'style="width:'.$this->profile->contact_form_width.';"':''; ?> >
+						<br style="clear:all;" />
 						<?php writeContactForm( $this ); ?>
 					</td>
 				</tr>
@@ -186,34 +187,34 @@ if ($this->returnAjaxForm) {
 			break;
 		case 2 :
 	?>
-			<table id="aiContactSafeForm" border="0" cellpadding="0" cellspacing="5">
+			<table id="aiContactSafeForm" style="border-width:0; padding:0; border-spacing:5;">
 				<tr>
-					<td valign="top" <?php echo $this->profile->contact_form_width>0?'style="width:'.$this->profile->contact_form_width.';"':''; ?> >
+					<td style="vertical-align:top;" <?php echo $this->profile->contact_form_width>0?'style="width:'.$this->profile->contact_form_width.';"':''; ?> >
 						<?php writeContactForm( $this ); ?>
 					</td>
-					<td valign="top" <?php echo $this->profile->contact_info_width>0?'style="width:'.$this->profile->contact_info_width.';"':''; ?> ><?php echo $this->contactinformations['contact_info']; ?></td>
+					<td style="vertical-align:top;" <?php echo $this->profile->contact_info_width>0?'style="width:'.$this->profile->contact_info_width.';"':''; ?> ><?php echo $this->contactinformations['contact_info']; ?></td>
 				</tr>
 			</table>
 	<?php
 			break;
 		case 3 :
 	?>
-			<table id="aiContactSafeForm" border="0" cellpadding="0" cellspacing="5">
+			<table id="aiContactSafeForm" style="border-width:0; padding:0; border-spacing:5;">
 				<tr>
-					<td valign="top" <?php echo $this->profile->contact_form_width>0?'style="width:'.$this->profile->contact_form_width.';"':''; ?> >
+					<td style="vertical-align:top;" <?php echo $this->profile->contact_form_width>0?'style="width:'.$this->profile->contact_form_width.';"':''; ?> >
 						<?php writeContactForm( $this ); ?>
 					</td>
 				</tr>
-				<tr><td valign="top" <?php echo $this->profile->contact_info_width>0?'style="width:'.$this->profile->contact_info_width.';"':''; ?> ><?php echo $this->contactinformations['contact_info']; ?></td></tr>
+				<tr><td style="vertical-align:top;" <?php echo $this->profile->contact_info_width>0?'style="width:'.$this->profile->contact_info_width.';"':''; ?> ><?php echo $this->contactinformations['contact_info']; ?></td></tr>
 			</table>
 	<?php
 			break;
 		case 4 :
 	?>
-			<table id="aiContactSafeForm" border="0" cellpadding="0" cellspacing="5">
+			<table id="aiContactSafeForm" style="border-width:0; padding:0; border-spacing:5;">
 				<tr>
-					<td valign="top" <?php echo $this->profile->contact_info_width>0?'style="width:'.$this->profile->contact_info_width.';"':''; ?> ><?php echo $this->contactinformations['contact_info']; ?></td>
-					<td valign="top" <?php echo $this->profile->contact_form_width>0?'style="width:'.$this->profile->contact_form_width.';"':''; ?> >
+					<td style="vertical-align:top;" <?php echo $this->profile->contact_info_width>0?'style="width:'.$this->profile->contact_info_width.';"':''; ?> ><?php echo $this->contactinformations['contact_info']; ?></td>
+					<td style="vertical-align:top;" <?php echo $this->profile->contact_form_width>0?'style="width:'.$this->profile->contact_form_width.';"':''; ?> >
 						<?php writeContactForm( $this ); ?>
 					</td>
 				</tr>

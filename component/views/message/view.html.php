@@ -35,7 +35,8 @@
  * - fixed the problem with errors displayed when aiContactSafeLink was used
  * - fixed the problem with errors displayed when aiContactSafeForm was used
  * - fixed the problem with loading SqueezeBox for module and plugins
- *
+ * 
+ * Modified by NVYush on 03.2014
  */
 
 // no direct access
@@ -75,13 +76,13 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 	function setVariables() {
 		if (!$this->returnAjaxForm) {
 			// load the mootools javascript library
-			JHTML::_('behavior.mootools');
+			JHtml::_('behavior.framework', true); // JHtml::_('behavior.mootools'); 
 		}
 
 		$doc = JFactory::getDocument();
 		$new_JFilterInput = new JFilterInput();
 
-		$jfcookie = JRequest::getVar('jfcookie', null ,"COOKIE");
+		$jfcookie = JFactory::getApplication()->input->get('jfcookie', null ,"COOKIE");
 		$lang = '';
 		if (isset($jfcookie["lang"]) && $jfcookie["lang"] != "") {
 			$lang = $new_JFilterInput->clean($jfcookie["lang"], 'cmd');
@@ -90,7 +91,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 			$lang = $this->_app->getUserState('application.lang', 'en');
 			$lang = substr($lang,0,2);
 		}
-		$this->lang = JRequest::getCmd('lang', $lang);
+		$this->lang = JFactory::getApplication()->input->get('lang', $lang);
 
 		$pf = 0;
 		$this->return_to = '';
@@ -98,7 +99,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 
 		$model = $this->getModel();
 
-		$uri = JURI::getInstance();
+		$uri = JUri::getInstance();
 		$test_return_to = $uri->toString( array('scheme', 'host', 'port', 'path', 'query', 'fragment'));
 		$this->current_url = $uri->toString( array('scheme', 'host', 'port', 'path', 'query', 'fragment'));
 		// get the Itemid variable
@@ -172,11 +173,11 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 			}
 			// if no profile is specified check for one specified in request
 			if ($pf == 0) {
-				$pf = JRequest::getVar('pf', 0, 'request', 'int');
+				$pf = JFactory::getApplication()->input->get('pf', 0, 'INT');
 			}
 			// if no return link is defined check for one in the request variables
 			if ( $this->return_to == '' ) {
-				$this->return_to = $new_JFilterInput->clean(str_replace('&#38;','&',JRequest::getVar('return_to', '', 'request', 'string')), 'path');
+				$this->return_to = $new_JFilterInput->clean(str_replace('&#38;','&', JFactory::getApplication()->input->get('return_to', '', 'STRING')), 'path');
 			}
 			// if no return link is found generate one and record if the one in the profile can be used
 			if ( $this->return_to == '' ) {
@@ -199,7 +200,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 		$this->fields = $this->generateHtmlFields( $this->fields );
 		$this->contactinformations['contact_info'] = '';
 		$this->contactinformations = $model->readContactInformations( $pf, $this->r_id );
-		$this->contactinformations['required_field_notification'] = str_replace('%mark%', $this->profile->required_field_mark,$this->contactinformations['required_field_notification']);
+		$this->contactinformations['required_field_notification'] = str_replace('%mark%', '<span class="required_field">'.$this->profile->required_field_mark.'</span>',$this->contactinformations['required_field_notification']);
 		// check if the contact information width and contact form width specified in the profile have "px" or "%" at the end and add "px" if it is not specified
 		if (substr($this->profile->contact_form_width,-2) != 'px' && substr($this->profile->contact_form_width,-1) != '%') {
 			$this->profile->contact_form_width .= 'px';
@@ -210,7 +211,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 
 		// if the form is not called after a submit with ajax run all the content plugin on contact information
 		if ( !$this->returnAjaxForm && $this->profile->plg_contact_info ) {
-			$this->contactinformations['contact_info'] = JHTML::_('content.prepare',$this->contactinformations['contact_info']);
+			$this->contactinformations['contact_info'] = JHtml::_('content.prepare',$this->contactinformations['contact_info']);
 		}
 
 		if ( array_key_exists('meta_description',$this->contactinformations) && strlen($this->contactinformations['meta_description']) > 0 ) {
@@ -224,13 +225,13 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 		}
 
 		if (!$this->returnAjaxForm) {
-			$db = JFactory::getDBO();
+			$db = JFactory::getDbo();
 			$query = 'SELECT config_value FROM `#__aicontactsafe_config` WHERE `config_key` = \'use_SqueezeBox\'';
 			$db->setQuery( $query );
 			$use_SqueezeBox = (int)$db->loadResult();
 			// load the javascript juctions
-			require_once( JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'js'.'/'.'aicontactsafe.js.php' );
-			$use_ajax = JRequest::getVar( 'use_ajax', $this->profile->use_ajax, 'request', 'int');
+			require_once( JPATH_ROOT.DIRECTORY_SEPARATOR.'components/com_aicontactsafe/includes/js/aicontactsafe.js.php' );
+			$use_ajax = JFactory::getApplication()->input->get('use_ajax', $this->profile->use_ajax, 'INT');
 			$script = "
 				//<![CDATA[
 				<!--
@@ -252,7 +253,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 			$document->addScriptDeclaration($script);
 
 			if ( $this->_config_values['keep_session_alive'] ) {
-				echo JHTML::_('behavior.keepalive');
+				echo JHtml::_('behavior.keepalive');
 			}
 		}
 	}
@@ -261,16 +262,16 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 	function viewDefault( $returnAjaxForm = false ) {
 		// initialize $returnAjaxForm
 		$this->returnAjaxForm = $returnAjaxForm;
-		$use_ajax = JRequest::getVar( 'use_ajax', 0, 'request', 'int');
+		$use_ajax = JFactory::getApplication()->input->get('use_ajax', 0, 'INT');
 		if($use_ajax) {
 			$this->returnAjaxForm = true;
 		}
 		// add javascript
 		$document = JFactory::getDocument();
 		if(version_compare(JVERSION, '1.6.0', 'ge')) {
-			$document->addScript( JURI::root(true).'/media/system/js/core.js');
+			$document->addScript( JUri::root(true).'/media/system/js/core.js');
 		} else {
-			$document->addScript(JURI::root(true).'/includes/js/joomla.javascript.js');
+			$document->addScript(JUri::root(true).'/includes/js/joomla.javascript.js');
 		}
 		// initialize the template variables
 		$this->setVariables();
@@ -299,7 +300,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 
 	// function to generate the header of the template to display
 	function getTmplHeader() {
-		$header = '<form action="'.JURI::root().'index.php?option=com_aicontactsafe" method="post" id="adminForm_'.$this->profile->id.'" name="adminForm_'.$this->profile->id.'" enctype="multipart/form-data">';
+		$header = '<form action="'.JUri::root().'index.php?option=com_aicontactsafe" method="post" id="adminForm_'.$this->profile->id.'" name="adminForm_'.$this->profile->id.'" enctype="multipart/form-data">';
 		return $header;
 	}
 
@@ -316,7 +317,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 			$return_to = str_replace('&','&#38;',$return_to);
 		}
 		$footer .= '<input type="hidden" id="return_to" name="return_to" value="'.$this->escape($return_to).'" />';
-		$uri = JURI::getInstance();
+		$uri = JUri::getInstance();
 		$current_url = $this->current_url;
 		if ( strpos($current_url, '&#38;') === false && strpos($current_url, '&') !== false ) {
 			$current_url = str_replace('&','&#38;',$current_url);
@@ -330,19 +331,19 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 		$footer .= '<input type="hidden" id="lang" name="lang" value="'.$this->escape($this->lang).'" />';
 		$footer .= '<input type="hidden" id="back_button" name="back_button" value="'.$this->escape($this->back_button).'" />';
 		$footer .= '<input type="hidden" id="boxchecked" name="boxchecked" value="0" />';
-		$use_ajax = JRequest::getVar( 'use_ajax', $this->profile->use_ajax, 'request', 'int');
+		$use_ajax = JFactory::getApplication()->input->get('use_ajax', $this->profile->use_ajax, 'INT');
 		if($use_ajax == 0) {
-			$use_ajax = JRequest::getVar( 'next_use_ajax', $this->profile->use_ajax, 'request', 'int');
+			$use_ajax = JFactory::getApplication()->input->get('next_use_ajax', $this->profile->use_ajax, 'INT');
 		}
 		$footer .= '<input type="hidden" id="use_ajax" name="use_ajax" value="'.(int)$use_ajax.'" />';
 		$footer .= '<input type="hidden" id="r_id" name="r_id" value="'.(int)$this->r_id.'" />';
-		$footer .= JHTML::_( 'form.token' );
+		$footer .= JHtml::_( 'form.token' );
 		$footer .= '</form>';
 
 		// display the version of aiContactSafe
-		$veraicontactsafe = JRequest::getVar('veraicontactsafe', 0, 'request', 'int');
+		$veraicontactsafe = JFactory::getApplication()->input->get('veraicontactsafe', 0, 'INT');
 		if ($veraicontactsafe) {
-			$footer .= '<br clear="all" /><div id="veraicontactsafe">aiContactSafe version : '.$this->_version.'</div><br clear="all" />';
+			$footer .= '<br style="clear:all;" /><div id="veraicontactsafe">aiContactSafe version : '.$this->_version.'</div><br style="clear:all;" />';
 		}
 
 		return $footer;
@@ -362,7 +363,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 		}
 
 		// if the values are sent from aiContactSafeLink deactivate highlight_errors
-		$dt = JRequest::getVar('dt', 0, 'post', 'int');
+		$dt = JFactory::getApplication()->input->get('dt', 0, 'INT');
 		// initialize the fields with error array
 		$fieldsWithErrors = array();
 		// get the information entered into the contact form if an error has occured, or generate the default values to use on the form
@@ -394,11 +395,11 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 		jimport('joomla.filesystem.file');
 		// generate the path to the load.gif image
 		$template_name = $this->_app->getTemplate();
-		$tPath = JPATH_ROOT.'/'.'templates'.'/'.$template_name.'/'.'html'.'/'.'com_aicontactsafe'.'/'.'message'.'/'.'load.gif';
+		$tPath = JPATH_ROOT.DIRECTORY_SEPARATOR.'templates/'.$template_name.'/html/com_aicontactsafe/message/load.gif';
 		if (JFile::exists($tPath)) {
-			$loadImage = JURI::root().'templates/'.$template_name.'/html/com_aicontactsafe/message/load.gif';
+			$loadImage = JUri::root().'templates/'.$template_name.'/html/com_aicontactsafe/message/load.gif';
 		} else {
-			$loadImage = JURI::root().'components/com_aicontactsafe/includes/images/load.gif';
+			$loadImage = JUri::root().'components/com_aicontactsafe/includes/images/load.gif';
 		}
 
 		// reset the variable to check if there is any required field
@@ -476,7 +477,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 						$select_combo[] = $txtSelect;
 					}
 					// generate the html tag
-					$field->html_tag = JHTML::_('select.genericlist', $select_combo, $field->name, $field->field_parameters, 'id', 'name', $postData_field_value, false, false);
+					$field->html_tag = JHtml::_('select.genericlist', $select_combo, $field->name, $field->field_parameters, 'id', 'name', $postData_field_value, false, false);
 					break;
 				case 'ED' :
 					// Editbox
@@ -560,7 +561,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 					}
 					$select_year .= '</select>';
 
-					$field->html_tag .= '<div id="div_' . $date_field_name . '" class="' . $date_field_name . '" ' . $field->field_parameters . '><table id="table_' . $date_field_name . '" class="aiContactSafe_date" border="0" cellpadding="0" cellspacing="0"><tr>';
+					$field->html_tag .= '<div id="div_' . $date_field_name . '" class="' . $date_field_name . '" ' . $field->field_parameters . '><table id="table_' . $date_field_name . '" class="aiContactSafe_date" style="border-width:0; padding:0; border-spacing:0;"><tr>';
 					switch( $this->profile->custom_date_format ) {
 						case 'mdy':
 							$field->html_tag .= '<td>'. $select_month .'</td><td>'. $select_day .'</td><td>'. $select_year .'</td>';
@@ -573,7 +574,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 							$field->html_tag .= '<td>'. $select_day .'</td><td>'. $select_month .'</td><td>'. $select_year .'</td>';
 							break;
 					}
-					$field->html_tag .= '<td>'. JHTML::_('calendar', $postDataValue, $date_field_name, $date_field_name, '%Y-%m-%d', array('class'=>'aiContactSafe_dateinputbox', 'size'=>'1', 'onchange'=>'setDate('.$this->profile->id.',this.value,\'' . $date_field_name . '\')', 'style'=>'display:none;')) .'</td>';
+					$field->html_tag .= '<td>'. JHtml::_('calendar', $postDataValue, $date_field_name, $date_field_name, '%Y-%m-%d', array('class'=>'aiContactSafe_dateinputbox', 'size'=>'1', 'onchange'=>'setDate('.$this->profile->id.',this.value,\'' . $date_field_name . '\')', 'style'=>'display:none;')) .'</td>';
 					$field->html_tag .= '</tr></table></div>';
 					break;
 					//
@@ -611,7 +612,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 							$txtSelect->id = -1;
 							array_unshift($select_combo, $txtSelect);
 						}
-						$field->html_tag = JHTML::_('select.genericlist', $select_combo, $field->name, $field->field_parameters, 'id', 'name', $postData_field_value, false, false);
+						$field->html_tag = JHtml::_('select.genericlist', $select_combo, $field->name, $field->field_parameters, 'id', 'name', $postData_field_value, false, false);
 					}
 					break;
 				case 'JC' :
@@ -619,7 +620,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 					$field->html_label = '<span class="aiContactSafe_label" id="aiContactSafe_label_' . $field->name . '" ' . $field->label_parameters . '><label for="' . $field->name . '" ' . $field->label_parameters . '>' . $field->field_label . '</label></span>';
 					if ($contacts_db_not_initialized) {
 						// initialize different variables
-						$db = JFactory::getDBO();
+						$db = JFactory::getDbo();
 						$contacts_db_not_initialized = false;
 					}
 					$user = JFactory::getUser();
@@ -642,7 +643,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 							$txtSelect->id = 0;
 							array_unshift($select_contacts, $txtSelect);
 						}
-						$field->html_tag = JHTML::_('select.genericlist', $select_contacts, $field->name, $field->field_parameters, 'id', 'name', $postData_field_value, false, false);
+						$field->html_tag = JHtml::_('select.genericlist', $select_contacts, $field->name, $field->field_parameters, 'id', 'name', $postData_field_value, false, false);
 					}
 					break;
 				case 'JU' :
@@ -650,7 +651,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 					$field->html_label = '<span class="aiContactSafe_label" id="aiContactSafe_label_' . $field->name . '" ' . $field->label_parameters . '><label for="' . $field->name . '" ' . $field->label_parameters . '>' . $field->field_label . '</label></span>';
 					if ($contacts_db_not_initialized) {
 						// initialize different variables
-						$db = JFactory::getDBO();
+						$db = JFactory::getDbo();
 						$contacts_db_not_initialized = false;
 					}
 					$query = 'SELECT name, id FROM #__users WHERE block = 0 ORDER BY name';
@@ -666,7 +667,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 							$txtSelect->id = 0;
 							array_unshift($select_users, $txtSelect);
 						}
-						$field->html_tag = JHTML::_('select.genericlist', $select_users, $field->name, $field->field_parameters, 'id', 'name', $postData_field_value, false, false);
+						$field->html_tag = JHtml::_('select.genericlist', $select_users, $field->name, $field->field_parameters, 'id', 'name', $postData_field_value, false, false);
 					}
 					break;
 				case 'SB' :
@@ -674,7 +675,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 					$field->html_label = '<span class="aiContactSafe_label" id="aiContactSafe_label_' . $field->name . '" ' . $field->label_parameters . '><label for="' . $field->name . '" ' . $field->label_parameters . '>' . $field->field_label . '</label></span>';
 					if ($contacts_db_not_initialized) {
 						// initialize different variables
-						$db = JFactory::getDBO();
+						$db = JFactory::getDbo();
 						$contacts_db_not_initialized = false;
 					}
 					$query = 'SELECT title, itemid FROM #__sobi2_item WHERE published = 1 AND approved = 1 ORDER BY title';
@@ -690,7 +691,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 							$txtSelect->itemid = 0;
 							array_unshift($select_sobi, $txtSelect);
 						}
-						$field->html_tag = JHTML::_('select.genericlist', $select_sobi, $field->name, $field->field_parameters, 'itemid', 'title', $postData_field_value, false, false);
+						$field->html_tag = JHtml::_('select.genericlist', $select_sobi, $field->name, $field->field_parameters, 'itemid', 'title', $postData_field_value, false, false);
 					}
 					break;
 				case 'HD' :
@@ -715,26 +716,26 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 						if ( array_key_exists($field->name.'_attachment_id', $postData) && strlen($postData[$field->name.'_attachment_id']) > 0 ) {
 							$field->html_tag .= '<div id="upload_'.$this->profile->id.'_file_'.$field->name.'" style="display:none"><input type="file" name="' . $field->name . '" id="' . $field->name . '" ' . ' onchange="startUploadFile(\''.$field->name.'\','.$this->profile->id.')" /></div>';
 							$field->html_tag .= '<div id="cancel_upload_'.$this->profile->id.'_file_'.$field->name.'" style="display:inline">';
-							$field->html_tag .= '<input type="text" name="' . $field->name . '_attachment_name" id="' . $field->name . '_attachment_name" ' . $field->field_parameters . ' value="' . (array_key_exists($field->name.'_attachment_name',$postData)?$postData[$field->name.'_attachment_name']:'') . '" readonly="readonly" />';
-							$field->html_tag .= '<input type="button" name="' . $field->name . '_attachment_cancel" id="' . $field->name . '_attachment_cancel" value="' . JText::_('COM_AICONTACTSAFE_CANCEL') . '" onclick="cancelUploadFile(\''.$field->name.'\', '.$this->profile->id.');" />';
+							$field->html_tag .= '<input class="btn" type="text" name="' . $field->name . '_attachment_name" id="' . $field->name . '_attachment_name" ' . $field->field_parameters . ' value="' . (array_key_exists($field->name.'_attachment_name',$postData)?$postData[$field->name.'_attachment_name']:'') . '" readonly="readonly" />';
+							$field->html_tag .= '<input class="btn" type="button" name="' . $field->name . '_attachment_cancel" id="' . $field->name . '_attachment_cancel" value="' . JText::_('COM_AICONTACTSAFE_CANCEL') . '" onclick="cancelUploadFile(\''.$field->name.'\', '.$this->profile->id.');" />';
 							$field->html_tag .= '</div>';
 						} else {
 							$field->html_tag .= '<div id="upload_'.$this->profile->id.'_file_'.$field->name.'" style="display:inline"><input type="file" name="' . $field->name . '" id="' . $field->name . '" ' . ' onchange="startUploadFile(\''.$field->name.'\','.$this->profile->id.')" /></div>';
 							$field->html_tag .= '<div id="cancel_upload_'.$this->profile->id.'_file_'.$field->name.'" style="display:none">';
-							$field->html_tag .= '<input type="text" name="' . $field->name . '_attachment_name" id="' . $field->name . '_attachment_name" ' . $field->field_parameters . ' value="' . (array_key_exists($field->name.'_attachment_name',$postData)?$postData[$field->name.'_attachment_name']:'') . '" readonly="readonly" />';
-							$field->html_tag .= '<input type="button" name="' . $field->name . '_attachment_cancel" id="' . $field->name . '_attachment_cancel" value="' . JText::_('COM_AICONTACTSAFE_CANCEL') . '" onclick="cancelUploadFile(\''.$field->name.'\', '.$this->profile->id.');" />';
+							$field->html_tag .= '<input class="btn" type="text" name="' . $field->name . '_attachment_name" id="' . $field->name . '_attachment_name" ' . $field->field_parameters . ' value="' . (array_key_exists($field->name.'_attachment_name',$postData)?$postData[$field->name.'_attachment_name']:'') . '" readonly="readonly" />';
+							$field->html_tag .= '<input class="btn" type="button" name="' . $field->name . '_attachment_cancel" id="' . $field->name . '_attachment_cancel" value="' . JText::_('COM_AICONTACTSAFE_CANCEL') . '" onclick="cancelUploadFile(\''.$field->name.'\', '.$this->profile->id.');" />';
 							$field->html_tag .= '</div>';
 						}
 					} else {
 						$field->html_tag .= '<div id="upload_'.$this->profile->id.'_file_'.$field->name.'" style="display:inline"><input type="file" name="' . $field->name . '" id="' . $field->name . '" ' . ' onchange="startUploadFile(\''.$field->name.'\','.$this->profile->id.')" /></div>';
 						$field->html_tag .= '<div id="cancel_upload_'.$this->profile->id.'_file_'.$field->name.'" style="display:none">';
-						$field->html_tag .= '<input type="text" name="' . $field->name . '_attachment_name" id="' . $field->name . '_attachment_name" ' . $field->field_parameters . ' value="" readonly="readonly" />';
-						$field->html_tag .= '<input type="button" name="' . $field->name . '_attachment_cancel" id="' . $field->name . '_attachment_cancel" value="' . JText::_('COM_AICONTACTSAFE_CANCEL') . '" onclick="cancelUploadFile(\''.$field->name.'\', '.$this->profile->id.');" />';
+						$field->html_tag .= '<input class="btn" type="text" name="' . $field->name . '_attachment_name" id="' . $field->name . '_attachment_name" ' . $field->field_parameters . ' value="" readonly="readonly" />';
+						$field->html_tag .= '<input class="btn" type="button" name="' . $field->name . '_attachment_cancel" id="' . $field->name . '_attachment_cancel" value="' . JText::_('COM_AICONTACTSAFE_CANCEL') . '" onclick="cancelUploadFile(\''.$field->name.'\', '.$this->profile->id.');" />';
 						$field->html_tag .= '</div>';
 					}
 					$field->html_tag .= '<input type="hidden" name="' . $field->name . '_attachment_id" id="' . $field->name . '_attachment_id" value="' . ((is_array($postData) && array_key_exists($field->name.'_attachment_id',$postData))?$postData[$field->name.'_attachment_id']:'') . '" />';
-					$field->html_tag .= '<div id="wait_upload_'.$this->profile->id.'_file_'.$field->name.'" style="display:none" ><img id="imgLoading_' . $field->name . '" border="0" src="'.$loadImage.'" />&nbsp;&nbsp;'.JText::_('COM_AICONTACTSAFE_PLEASE_WAIT').'</div>';
-					$field->html_tag .= '<iframe id="iframe_upload_file_' . $this->profile->id.'_file_'.$field->name.'" name="iframe_upload_file_' . $this->profile->id.'_file_'.$field->name.'" src="'.JURI::root().'components/com_aicontactsafe/index.html" style="width:0;height:0;border:0px solid #FFF;display:none;"></iframe>';
+					$field->html_tag .= '<div id="wait_upload_'.$this->profile->id.'_file_'.$field->name.'" style="display:none" ><img id="imgLoading_' . $field->name . '" style="border-width:0;" alt=" " src="'.$loadImage.'" />&nbsp;&nbsp;'.JText::_('COM_AICONTACTSAFE_PLEASE_WAIT').'</div>';
+					$field->html_tag .= '<iframe id="iframe_upload_file_' . $this->profile->id.'_file_'.$field->name.'" name="iframe_upload_file_' . $this->profile->id.'_file_'.$field->name.'" src="'.JUri::root().'components/com_aicontactsafe/index.html" style="width:0;height:0;border:0px solid #FFF;display:none;"></iframe>';
 					break;
 				case 'NO' :
 					// Number
@@ -892,7 +893,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 		// if css is activated and there is a css file to call, continue the function
 		if ($use_css) {
 			$document = JFactory::getDocument();
-			$nameCssGeneral = JURI::root().'components/com_aicontactsafe/includes/css/aicontactsafe_general.css';
+			$nameCssGeneral = JUri::root().'components/com_aicontactsafe/includes/css/aicontactsafe_general.css';
 			$document->addStyleSheet($nameCssGeneral);
 
 			if (strlen($cssFile) > 0) {
@@ -900,11 +901,11 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 				jimport('joomla.filesystem.file');
 				// determine if to use the css from the template or from the component
 				$template_name = $this->_app->getTemplate();
-				$tPath = JPATH_ROOT.'/'.'templates'.'/'.$template_name.'/'.'html'.'/'.'com_aicontactsafe'.'/'.'message'.'/'.$cssFile;
+				$tPath = JPATH_ROOT.DIRECTORY_SEPARATOR.'templates/'.$template_name.'/html/com_aicontactsafe/message/'.$cssFile;
 				if (JFile::exists($tPath)) {
-					$nameCssFile = JURI::root().'templates/'.$template_name.'/html/com_aicontactsafe/message/'.$cssFile;
+					$nameCssFile = JUri::root().'templates/'.$template_name.'/html/com_aicontactsafe/message/'.$cssFile;
 				} else {
-					$nameCssFile = JURI::root().'media/aicontactsafe/cssprofiles/'.$cssFile;
+					$nameCssFile = JUri::root().'media/aicontactsafe/cssprofiles/'.$cssFile;
 				}
 				$document->addStyleSheet($nameCssFile);
 			}
@@ -935,7 +936,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 				case 1:
 					// Multiple CAPTCHA Engine
 					$captchaPlugin = JPluginHelper::getPlugin('content', 'captcha');
-					$captchaPluginParameters = new JParameter($captchaPlugin->params);
+					$captchaPluginParameters = new JForm($captchaPlugin->params);
 					if ( $captchaPluginParameters->get( 'captcha_systems' ) == 'recaptcha' ) {
 						?>
 						<input type="hidden" id="reCaptchaReset" name="reCaptchaReset" value="1" />
