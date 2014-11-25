@@ -75,8 +75,10 @@
 }
 
 /** AI version **/
-span#ai_version {
-	font-size:9px;
+.page-title span,span#ai_version {
+    color: #FFF !important;
+    font-size: 1.5em !important;
+    text-shadow: 1px 1px 2px #000;
 }
 
 /** Help instructions **/
