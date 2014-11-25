@@ -123,7 +123,7 @@ class AiContactSafeViewDefault extends JView {
 				jimport('joomla.filesystem.file');
 				// determine if to use the css from the template or from the component
 				$template_name = $this->_app->getTemplate();
-				$tPath = JPATH_ROOT.DS.'templates'.DS.$template_name.DS.'html'.DS.'com_aicontactsafe'.DS.$cssFile;		
+				$tPath = JPATH_ROOT.'/'.'templates'.'/'.$template_name.'/'.'html'.'/'.'com_aicontactsafe'.'/'.$cssFile;		
 				if (JFile::exists($tPath)) {
 					$nameCssFile = JURI::root().'templates/'.$template_name.'/html/com_aicontactsafe/'.$cssFile;
 				} else {

@@ -229,7 +229,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 			$db->setQuery( $query );
 			$use_SqueezeBox = (int)$db->loadResult();
 			// load the javascript juctions
-			require_once( JPATH_ROOT.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'js'.DS.'aicontactsafe.js.php' );
+			require_once( JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'js'.'/'.'aicontactsafe.js.php' );
 			$use_ajax = JRequest::getVar( 'use_ajax', $this->profile->use_ajax, 'request', 'int');
 			$script = "
 				//<![CDATA[
@@ -394,7 +394,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 		jimport('joomla.filesystem.file');
 		// generate the path to the load.gif image
 		$template_name = $this->_app->getTemplate();
-		$tPath = JPATH_ROOT.DS.'templates'.DS.$template_name.DS.'html'.DS.'com_aicontactsafe'.DS.'message'.DS.'load.gif';
+		$tPath = JPATH_ROOT.'/'.'templates'.'/'.$template_name.'/'.'html'.'/'.'com_aicontactsafe'.'/'.'message'.'/'.'load.gif';
 		if (JFile::exists($tPath)) {
 			$loadImage = JURI::root().'templates/'.$template_name.'/html/com_aicontactsafe/message/load.gif';
 		} else {
@@ -900,7 +900,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 				jimport('joomla.filesystem.file');
 				// determine if to use the css from the template or from the component
 				$template_name = $this->_app->getTemplate();
-				$tPath = JPATH_ROOT.DS.'templates'.DS.$template_name.DS.'html'.DS.'com_aicontactsafe'.DS.'message'.DS.$cssFile;
+				$tPath = JPATH_ROOT.'/'.'templates'.'/'.$template_name.'/'.'html'.'/'.'com_aicontactsafe'.'/'.'message'.'/'.$cssFile;
 				if (JFile::exists($tPath)) {
 					$nameCssFile = JURI::root().'templates/'.$template_name.'/html/com_aicontactsafe/message/'.$cssFile;
 				} else {

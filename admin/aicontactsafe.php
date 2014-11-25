@@ -15,16 +15,16 @@ if ( session_id() == '' ) {
 }
 
 // load the main controller
-require_once( JPATH_COMPONENT.DS.'controller.php' );
+require_once( JPATH_COMPONENT.'/'.'controller.php' );
 
 // load the main model
-require_once( JPATH_COMPONENT.DS.'models'.DS.'default.php' );
+require_once( JPATH_COMPONENT.'/'.'models'.'/'.'default.php' );
 
 // load the main view
-require_once( JPATH_COMPONENT.DS.'views'.DS.'default'.DS.'view.html.php' );
+require_once( JPATH_COMPONENT.'/'.'views'.'/'.'default'.'/'.'view.html.php' );
 
 // include the table directory
-JTable::addIncludePath(JPATH_ROOT.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'tables');
+JTable::addIncludePath(JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'tables');
 
 // get the current task, default is 'display'
 $task = JRequest::getCmd('task', 'display');
@@ -50,7 +50,7 @@ if(strlen(trim($task)) == 0) {
 
 // if a section is selected the coresponding controller is loaded
 if (strlen($sTask) > 0){
-	require_once( JPATH_COMPONENT.DS.'controllers'.DS.$sTask.'.php' );
+	require_once( JPATH_COMPONENT.'/'.'controllers'.'/'.$sTask.'.php' );
 }
 $controllerName = 'AiContactSafeController'.$sTask;
 

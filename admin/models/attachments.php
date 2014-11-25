@@ -36,10 +36,9 @@ class AiContactSafeModelAttachments extends AiContactSafeModelDefault {
 		jimport('joomla.filesystem.file');
 
 		// get the path to attachments upload
-		$upload_folder = str_replace('\\',DS,$this->_config_values['upload_attachments']);
-		$upload_folder = str_replace('/',DS,$upload_folder);
-		$upload_folder = str_replace('&#92;',DS,$upload_folder);
-		$path_upload = JPATH_ROOT.DS.$upload_folder;
+		$upload_folder = '/'.$this->_config_values['upload_attachments'];
+
+		$path_upload = JPATH_ROOT.'/'.$upload_folder;
 
 		// an array to record the files in the database and exclude them from the array with the files from the upload folder 
 		// so I get only the files not in the database when I read files from the upload folder
@@ -48,7 +47,7 @@ class AiContactSafeModelAttachments extends AiContactSafeModelDefault {
 		// check the files in the databse
 		foreach($recorded_files as $recorded_file) {
 			// check if the file exists
-			$file = $path_upload.DS.$recorded_file->name;
+			$file = $path_upload.'/'.$recorded_file->name;
 			if (JFile::exists($file)) {
 				if ($recorded_file->message_id > 0) {
 					$recorded_file->recorded = 1;
@@ -147,10 +146,9 @@ class AiContactSafeModelAttachments extends AiContactSafeModelDefault {
 		jimport('joomla.filesystem.file');
 
 		// get the path to attachments upload
-		$upload_folder = str_replace('\\',DS,$this->_config_values['upload_attachments']);
-		$upload_folder = str_replace('/',DS,$upload_folder);
-		$upload_folder = str_replace('&#92;',DS,$upload_folder);
-		$path_upload = JPATH_ROOT.DS.$upload_folder;
+		$upload_folder = '/'.$this->_config_values['upload_attachments'];
+
+		$path_upload = JPATH_ROOT.'/'.$upload_folder;
 
 		// read the ids of the records seleted for deletion
 		$cid = JRequest::getVar( 'cid', array(), 'post', 'array' );
@@ -165,7 +163,7 @@ class AiContactSafeModelAttachments extends AiContactSafeModelDefault {
 			$db->setQuery( $query );
 			$db->query();
 			// delete it from the upload folder
-			$file = $path_upload.DS.$file_name;
+			$file = $path_upload.'/'.$file_name;
 			if (JFile::exists($file)) {
 				JFile::delete($file);
 			}
@@ -177,12 +175,11 @@ class AiContactSafeModelAttachments extends AiContactSafeModelDefault {
 		// get the name of the file
 		$file_name = JRequest::getCmd('file', '');
 		// get the path to attachments upload
-		$upload_folder = str_replace('\\',DS,$this->_config_values['upload_attachments']);
-		$upload_folder = str_replace('/',DS,$upload_folder);
-		$upload_folder = str_replace('&#92;',DS,$upload_folder);
-		$path_upload = JPATH_ROOT.DS.$upload_folder;
+		$upload_folder = '/'.$this->_config_values['upload_attachments'];
 
-		$file = $path_upload.DS.$file_name;
+		$path_upload = JPATH_ROOT.'/'.$upload_folder;
+
+		$file = $path_upload.'/'.$file_name;
 
 		// start the file download
 		if ( strlen(trim($file_name)) > 0 && file_exists($file) ){

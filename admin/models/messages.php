@@ -157,17 +157,16 @@ class AiContactSafeModelMessages extends AiContactSafeModelDefault {
 		jimport('joomla.filesystem.path');
 		jimport('joomla.filesystem.file');
 		// get the path to attachments upload
-		$upload_folder = str_replace('\\',DS,$this->_config_values['upload_attachments']);
-		$upload_folder = str_replace('/',DS,$upload_folder);
-		$upload_folder = str_replace('&#92;',DS,$upload_folder);
-		$path_upload = JPATH_ROOT.DS.$upload_folder;
+		$upload_folder = '/'.$this->_config_values['upload_attachments'];
+
+		$path_upload = JPATH_ROOT.'/'.$upload_folder;
 		// get the files to delete
 		$query = 'SELECT id, name FROM #__aicontactsafe_messagefiles WHERE message_id IN ( '.$cids.' )';
 		$db->setQuery($query);
 		$files = $db->loadObjectList();
 		if (count($files) > 0) {
 			foreach($files as $file) {
-				$delete_file = $path_upload.DS.$file->name;
+				$delete_file = $path_upload.'/'.$file->name;
 				JFile::delete($delete_file);
 				$query = 'DELETE FROM #__aicontactsafe_messagefiles WHERE id = '.$file->id;
 				$db->setQuery($query);

@@ -29,25 +29,25 @@ function com_uninstall() {
 	jimport('joomla.filesystem.file');
 
 	// delete joomfish contentelements
-	$aicontactsafe_contactinformations = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_contactinformations.xml');
+	$aicontactsafe_contactinformations = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_contactinformations.xml');
 	if (is_file($aicontactsafe_contactinformations)) {
 		JFile::delete($aicontactsafe_contactinformations);
 	}
-	$aicontactsafe_fields = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_fields.xml');
+	$aicontactsafe_fields = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_fields.xml');
 	if (is_file($aicontactsafe_fields)) {
 		JFile::delete($aicontactsafe_fields);
 	}
-	$aicontactsafe_profiles = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_profiles.xml');
+	$aicontactsafe_profiles = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_profiles.xml');
 	if (is_file($aicontactsafe_profiles)) {
 		JFile::delete($aicontactsafe_profiles);
 	}
 
 	// delete artio plugin
-	$com_aicontactsafe = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext'.DS.'com_aicontactsafe.php');
+	$com_aicontactsafe = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext'.'/'.'com_aicontactsafe.php');
 	if (is_file($com_aicontactsafe)) {
 		JFile::delete($com_aicontactsafe);
 	}
-	$com_aicontactsafe = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext'.DS.'com_aicontactsafe.xml');
+	$com_aicontactsafe = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext'.'/'.'com_aicontactsafe.xml');
 	if (is_file($com_aicontactsafe)) {
 		JFile::delete($com_aicontactsafe);
 	}

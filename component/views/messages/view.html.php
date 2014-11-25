@@ -4,4 +4,4 @@
 defined('_JEXEC') or die('Restricted access');
 
 // load the view
-require_once( JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'views'.DS.'messages'.DS.'view.html.php' );
+require_once( JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'views'.'/'.'messages'.'/'.'view.html.php' );

@@ -29,7 +29,7 @@ function com_install() {
 
 	// make sure the sys language file is loaded
 	$lang = JFactory::getLanguage();
-	$lang->load('com_aicontactsafe.sys', JPATH_ROOT . DS . 'administrator');
+$lang->load('com_aicontactsafe.sys', JPATH_ROOT . '/administrator');
 
 	// import joomla clases to manage file system
 	jimport('joomla.filesystem.file');
@@ -594,36 +594,36 @@ function com_install() {
 	jimport('joomla.filesystem.file');
 
 // create the folder structure in media folder
-	$att_folder = JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'attachments';
+	$att_folder = JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'attachments';
 	if (!JFolder::exists($att_folder)) {
 		JFolder::create($att_folder);
 	}
-	$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'index.html');
-	$dest = JPath::clean($att_folder.DS.'index.html');
+	$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'index.html');
+	$dest = JPath::clean($att_folder.'/'.'index.html');
 	if (!JFile::exists($dest)) {
 		JFile::copy($src, $dest);
 	}
-	$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'htaccess'.DS.'.htaccess');
-	$dest = JPath::clean($att_folder.DS.'.htaccess');
+	$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'htaccess'.'/'.'.htaccess');
+	$dest = JPath::clean($att_folder.'/'.'.htaccess');
 	if (!JFile::exists($dest)) {
 		JFile::copy($src, $dest);
 	}
 
-	$css_folder = JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'cssprofiles';
+	$css_folder = JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'cssprofiles';
 	if (!JFolder::exists($css_folder)) {
 		JFolder::create($css_folder);
 	}
-	$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'index.html');
-	$dest = JPath::clean($css_folder.DS.'index.html');
+	$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'index.html');
+	$dest = JPath::clean($css_folder.'/'.'index.html');
 	if (!JFile::exists($dest)) {
 		JFile::copy($src, $dest);
 	}
-	$email_folder = JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'mailtemplates';
+	$email_folder = JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'mailtemplates';
 	if (!JFolder::exists($email_folder)) {
 		JFolder::create($email_folder);
 	}
-	$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'index.html');
-	$dest = JPath::clean($email_folder.DS.'index.html');
+	$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'index.html');
+	$dest = JPath::clean($email_folder.'/'.'index.html');
 	if (!JFile::exists($dest)) {
 		JFile::copy($src, $dest);
 	}
@@ -887,7 +887,7 @@ function com_install() {
 	}
 	// upload_attachments
 	$key = 'upload_attachments';
-	$value = 'media'.DS.'aicontactsafe'.DS.'attachments';
+	$value = 'media'.'/'.'aicontactsafe'.'/'.'attachments';
 	$value = str_replace('\\','&#92;',$value);
 	$query = 'SELECT config_value FROM `#__aicontactsafe_config` WHERE `config_key` = \'' . $key . '\'';
 	$db->setQuery( $query );
@@ -896,7 +896,7 @@ function com_install() {
 		$query = 'INSERT INTO `#__aicontactsafe_config` (`id`, `config_key`, `config_value`) VALUES ( null, \'' . $key . '\', \'' . $value . '\')';
 		$db->setQuery( $query );
 		$db->query();
-	} else if (trim($config_value) == 'components&#92;com_aicontactsafe&#92;attachments' || trim($config_value) == 'components'.DS.'com_aicontactsafe'.DS.'attachments') {
+	} else if (trim($config_value) == 'components&#92;com_aicontactsafe&#92;attachments' || trim($config_value) == 'components'.'/'.'com_aicontactsafe'.'/'.'attachments') {
 		$query = 'UPDATE `#__aicontactsafe_config` SET `config_value` =  \'' . $value . '\' WHERE config_key =  \'' . $key . '\'';
 		$db->setQuery( $query );
 		$db->query();
@@ -992,16 +992,16 @@ function com_install() {
 	$profiles = $db->loadObjectList();
 	foreach($profiles as $profile) {
 		// add the profile's CSS if not already there
-		$src_file = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_aicontactsafe'.DS.'views'.DS.'message'.DS.'tmpl'.DS.'profile_align_margin.css');
-		$dst_file = JPath::clean(JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'cssprofiles'.DS.'profile_css_'.$profile->id.'.css');
+		$src_file = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'views'.'/'.'message'.'/'.'tmpl'.'/'.'profile_align_margin.css');
+		$dst_file = JPath::clean(JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'cssprofiles'.'/'.'profile_css_'.$profile->id.'.css');
 		if (!is_file($dst_file)) {
 			$profile_css_code = JFile::read($src_file);
 			$profile_css_code = str_replace('aiContactSafe_mainbody_1','aiContactSafe_mainbody_'.$profile->id,$profile_css_code);
 			JFile::write($dst_file, $profile_css_code);
 		}
 		// add the profile's mail template if not already there
-		$src_file = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_aicontactsafe'.DS.'views'.DS.'mail'.DS.'tmpl'.DS.'mail.php');
-		$dst_file = JPath::clean(JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'mailtemplates'.DS.'mail_'.$profile->id.'.php');
+		$src_file = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'views'.'/'.'mail'.'/'.'tmpl'.'/'.'mail.php');
+		$dst_file = JPath::clean(JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'mailtemplates'.'/'.'mail_'.$profile->id.'.php');
 		if (!is_file($dst_file)) {
 			JFile::copy($src_file, $dst_file);
 		}
@@ -1153,41 +1153,41 @@ function com_install() {
 	}
 
 	// copy joomfish contentelements
-	$contentelements = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements');
+	$contentelements = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements');
 	if (is_dir($contentelements)) {
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'joomfish'.DS.'aicontactsafe_contactinformations.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_contactinformations.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'joomfish'.'/'.'aicontactsafe_contactinformations.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_contactinformations.xml');
 		JFile::copy($src, $dest);
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'joomfish'.DS.'aicontactsafe_fields.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_fields.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'joomfish'.'/'.'aicontactsafe_fields.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_fields.xml');
 		JFile::copy($src, $dest);
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'joomfish'.DS.'aicontactsafe_profiles.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_profiles.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'joomfish'.'/'.'aicontactsafe_profiles.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_profiles.xml');
 		JFile::copy($src, $dest);
 	}
 
 	// copy falang contentelements
-	$contentelements = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements');
+	$contentelements = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements');
 	if (is_dir($contentelements)) {
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'falang'.DS.'aicontactsafe_contactinformations.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_contactinformations.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'falang'.'/'.'aicontactsafe_contactinformations.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_contactinformations.xml');
 		JFile::copy($src, $dest);
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'falang'.DS.'aicontactsafe_fields.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_fields.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'falang'.'/'.'aicontactsafe_fields.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_fields.xml');
 		JFile::copy($src, $dest);
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'falang'.DS.'aicontactsafe_profiles.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_profiles.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'falang'.'/'.'aicontactsafe_profiles.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_profiles.xml');
 		JFile::copy($src, $dest);
 	}
 
 	// copy artio plugin
-	$artio = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext');
+	$artio = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext');
 	if (is_dir($artio)) {
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'artio'.DS.'com_aicontactsafe.php');
-		$dest = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext'.DS.'com_aicontactsafe.php');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'artio'.'/'.'com_aicontactsafe.php');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext'.'/'.'com_aicontactsafe.php');
 		JFile::copy($src, $dest);
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'artio'.DS.'com_aicontactsafe.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext'.DS.'com_aicontactsafe.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'artio'.'/'.'com_aicontactsafe.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext'.'/'.'com_aicontactsafe.xml');
 		JFile::copy($src, $dest);
 	}
 
@@ -1212,27 +1212,27 @@ function com_install() {
 	$installer = new JInstaller();
 	$extensions_updated = array();
 
-	$xml_file = JPath::clean(JPATH_ROOT.DS.'modules'.DS.'mod_aicontactsafe'.DS.'mod_aicontactsafe.xml');
+	$xml_file = JPath::clean(JPATH_ROOT.'/'.'modules'.'/'.'mod_aicontactsafe'.'/'.'mod_aicontactsafe.xml');
 	if (is_file($xml_file)) {
-		@$installer->install(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'mod_aicontactsafe');
+		@$installer->install(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'mod_aicontactsafe');
 		$extensions_updated[] = 'mod_aicontactsafe';
 	}
 	if(version_compare(JVERSION, '1.6.0', 'ge')) {
-		$xml_file = JPath::clean(JPATH_ROOT.DS.'plugins'.DS.'content'.DS.'aicontactsafeform'.DS.'aicontactsafeform.xml');
+		$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafeform'.'/'.'aicontactsafeform.xml');
 	} else {
-		$xml_file = JPath::clean(JPATH_ROOT.DS.'plugins'.DS.'content'.DS.'aicontactsafeform.xml');
+		$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafeform.xml');
 	}
 	if (is_file($xml_file)) {
-		@$installer->install(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafeform');
+		@$installer->install(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafeform');
 		$extensions_updated[] = 'plg_aicontactsafeform';
 	}
 	if(version_compare(JVERSION, '1.6.0', 'ge')) {
-		$xml_file = JPath::clean(JPATH_ROOT.DS.'plugins'.DS.'content'.DS.'aicontactsafelink'.DS.'aicontactsafelink.xml');
+		$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafelink'.'/'.'aicontactsafelink.xml');
 	} else {
-		$xml_file = JPath::clean(JPATH_ROOT.DS.'plugins'.DS.'content'.DS.'aicontactsafelink.xml');
+		$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafelink.xml');
 	}
 	if (is_file($xml_file)) {
-		@$installer->install(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafelink');
+		@$installer->install(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafelink');
 		$extensions_updated[] = 'plg_aicontactsafelink';
 	}
 

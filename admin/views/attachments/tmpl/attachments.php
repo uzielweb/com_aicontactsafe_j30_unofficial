@@ -90,7 +90,7 @@ defined('_JEXEC') or die('Restricted access');
 			<tr class="row<?php echo $k; ?>">
 				<td width="1" align="center"><?php echo $checked; ?><input type="hidden" id="file_<?php echo (int)$row->id; ?>" name="file_<?php echo (int)$row->id; ?>" value="<?php echo htmlspecialchars($row->name); ?>" /></td>
 				<?php
-					$file = $this->path_upload.DS.$row->name;
+					$file = $this->path_upload.'/'.$row->name;
 					if (JFile::exists($file)) {
 				?>
 				<td align="left"><a href="<?php echo JURI::base().'index.php?option=com_aicontactsafe&sTask=attachments&task=download&file='.$row->name.'&format=raw'; ?>" target="_blank" class="attachments_download"><?php echo $row->name; ?></a></td>

@@ -48,12 +48,11 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 		// get the path to attachments upload
-		$upload_folder = str_replace('\\',DS,$this->_config_values['upload_attachments']);
-		$upload_folder = str_replace('/',DS,$upload_folder);
-		$upload_folder = str_replace('&#92;',DS,$upload_folder);
-		$path_upload = JPATH_ROOT.DS.$upload_folder;
+		$upload_folder = '/'.$this->_config_values['upload_attachments'];
 
-		$file = $path_upload.DS.$filename;
+		$path_upload = JPATH_ROOT.'/'.$upload_folder;
+
+		$file = $path_upload.'/'.$filename;
 		if (JFile::exists($file)) {
 			JFile::delete($file);
 		}
@@ -142,10 +141,9 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 
 			if ( $errorType == 0 ) {
 				// get the path to attachments upload
-				$upload_folder = str_replace('\\',DS,$this->_config_values['upload_attachments']);
-				$upload_folder = str_replace('/',DS,$upload_folder);
-				$upload_folder = str_replace('&#92;',DS,$upload_folder);
-				$path_upload = JPATH_ROOT.DS.$upload_folder;
+		$upload_folder = '/'.$this->_config_values['upload_attachments'];
+
+		$path_upload = JPATH_ROOT.'/'.$upload_folder;
 	
 				$newFile = JTable::getInstance('aicontactsafe_messagefiles', 'Table');
 	
@@ -171,7 +169,7 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 					$db->setQuery($query);
 					$db->query();
 
-					$filepath = JPath::clean($path_upload.DS.$file_name);
+					$filepath = JPath::clean($path_upload.'/'.$file_name);
 					JFile::upload($file['tmp_name'], $filepath);
 				}
 			}
@@ -807,10 +805,9 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 		$db = JFactory::getDBO();
 
 		// get the path to attachments upload
-		$upload_folder = str_replace('\\',DS,$this->_config_values['upload_attachments']);
-		$upload_folder = str_replace('/',DS,$upload_folder);
-		$upload_folder = str_replace('&#92;',DS,$upload_folder);
-		$path_upload = JPATH_ROOT.DS.$upload_folder;
+		$upload_folder = '/'.$this->_config_values['upload_attachments'];
+
+		$path_upload = JPATH_ROOT.'/'.$upload_folder;
 
 		// get the requested profile id
 		$pf = $postData['pf'];
@@ -1013,7 +1010,7 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 						$field_value = '<a class="aiContactSafe_attachment" href="'.$field_link.'" target="_blank">'.$file_name.'</a>';
 						$fields[$field_key]->fld_link = $field_link;
 
-						$filepath = JPath::clean($path_upload.DS.$file_name);
+						$filepath = JPath::clean($path_upload.'/'.$file_name);
 						if ($this->_config_values['attach_to_email']) {
 							$file_attachments[] = $filepath;
 						}
@@ -1233,17 +1230,17 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 				ob_start();
 				// determine if to use the mail template from the template or from the component
 				$template_name = $this->_app->getTemplate();
-				$tPath = JPATH_ROOT.DS.'templates'.DS.$template_name.DS.'html'.DS.'com_aicontactsafe'.DS.'mail'.DS.'mail_'.$profile->id.'.php';
+				$tPath = JPATH_ROOT.'/'.'templates'.'/'.$template_name.'/'.'html'.'/'.'com_aicontactsafe'.'/'.'mail'.'/'.'mail_'.$profile->id.'.php';
 
 				$nameMailTemplate = '';
 				if (JFile::exists($tPath)) {
 					$nameMailTemplate = $tPath;
 				} else {
-					$tPath = JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'mailtemplates'.DS.'mail_'.$profile->id.'.php';
+					$tPath = JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'mailtemplates'.'/'.'mail_'.$profile->id.'.php';
 					if (JFile::exists($tPath)) {
 						$nameMailTemplate = $tPath;
 					} else {
-						$nameMailTemplate = JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'mailtemplates'.DS.'mail.php';
+						$nameMailTemplate = JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'mailtemplates'.'/'.'mail.php';
 					}
 				}
 				
@@ -1445,17 +1442,16 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 		// get the id of the file
 		$id = JRequest::getVar('id', 0, 'request', 'int');
 		// get the path to attachments upload
-		$upload_folder = str_replace('\\',DS,$this->_config_values['upload_attachments']);
-		$upload_folder = str_replace('/',DS,$upload_folder);
-		$upload_folder = str_replace('&#92;',DS,$upload_folder);
-		$path_upload = JPATH_ROOT.DS.$upload_folder;
+		$upload_folder = '/'.$this->_config_values['upload_attachments'];
+
+		$path_upload = JPATH_ROOT.'/'.$upload_folder;
 		// initialize the database
 		$db = JFactory::getDBO();
 		// get the name of the file to download
 		$query = 'SELECT name FROM #__aicontactsafe_messagefiles where id = ' . $id;
 		$db->setQuery($query);
 		$file_name = $db->loadResult();
-		$file = $path_upload.DS.$file_name;
+		$file = $path_upload.'/'.$file_name;
 
 		// start the file download
 		if ( strlen(trim($file_name)) > 0 && file_exists($file) ){
@@ -1525,17 +1521,16 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 		jimport('joomla.filesystem.path');
 		jimport('joomla.filesystem.file');
 		// get the path to attachments upload
-		$upload_folder = str_replace('\\',DS,$this->_config_values['upload_attachments']);
-		$upload_folder = str_replace('/',DS,$upload_folder);
-		$upload_folder = str_replace('&#92;',DS,$upload_folder);
-		$path_upload = JPATH_ROOT.DS.$upload_folder;
+		$upload_folder = '/'.$this->_config_values['upload_attachments'];
+
+		$path_upload = JPATH_ROOT.'/'.$upload_folder;
 		// get the files to delete
 		$query = 'SELECT id, name FROM #__aicontactsafe_messagefiles WHERE message_id = '.$message_id.' and r_id = '.$postData['r_id'];
 		$db->setQuery($query);
 		$files = $db->loadObjectList();
 		if (count($files) > 0) {
 			foreach($files as $file) {
-				$delete_file = $path_upload.DS.$file->name;
+				$delete_file = $path_upload.'/'.$file->name;
 				JFile::delete($delete_file);
 				$query = 'DELETE FROM #__aicontactsafe_messagefiles WHERE id = '.$file->id;
 				$db->setQuery($query);

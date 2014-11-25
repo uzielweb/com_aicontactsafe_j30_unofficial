@@ -29,7 +29,7 @@ class AiContactSafeViewCaptcha extends AiContactSafeViewDefault {
 		$this->profile = $model->getProfile();
 
 		// load the captcha class
-		require_once( JPATH_ROOT.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'captcha'.DS.'captcha.php' );
+		require_once( JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'captcha'.'/'.'captcha.php' );
 		// captcha parameters
 		$captchaParameters = array();
 

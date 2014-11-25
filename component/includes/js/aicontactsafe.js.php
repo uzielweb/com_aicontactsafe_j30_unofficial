@@ -33,7 +33,7 @@ jimport('joomla.filesystem.file');
 // generate the path to the load.gif image
 $app = JFactory::getApplication();
 $template_name = $app->getTemplate();
-$tPath = JPATH_ROOT.DS.'templates'.DS.$template_name.DS.'html'.DS.'com_aicontactsafe'.DS.'message'.DS.'load.gif';
+$tPath = JPATH_ROOT.'/'.'templates'.'/'.$template_name.'/'.'html'.'/'.'com_aicontactsafe'.'/'.'message'.'/'.'load.gif';
 if (JFile::exists($tPath)) {
 	$loadImage = JURI::root().'templates/'.$template_name.'/html/com_aicontactsafe/message/load.gif';
 } else {

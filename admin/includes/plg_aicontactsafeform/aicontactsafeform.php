@@ -105,7 +105,7 @@ class plgContentAiContactSafeForm extends JPlugin {
 						// determine if to use the css from the template or from the component
 						$app = JFactory::getApplication();
 						$template_name = $app->getTemplate();
-						$tPath = JPATH_ROOT.DS.'templates'.DS.$template_name.DS.'html'.DS.'com_aicontactsafe'.DS.$css_file;
+						$tPath = JPATH_ROOT.'/'.'templates'.'/'.$template_name.'/'.'html'.'/'.'com_aicontactsafe'.'/'.$css_file;
 					
 						// if the css is not defined in the template use the one from the component
 						if (JFile::exists($tPath)) {
@@ -147,7 +147,7 @@ class plgContentAiContactSafeForm extends JPlugin {
 					$session->set( 'isOK:message', false );
 	
 					// load the javascript functions
-					require_once( JPATH_ROOT.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'js'.DS.'aicontactsafe.js.php' );
+					require_once( JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'js'.'/'.'aicontactsafe.js.php' );
 					
 					// generate the url for ajax
 					$jfcookie = JRequest::getVar('jfcookie', null ,"COOKIE");

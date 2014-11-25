@@ -15,16 +15,16 @@ if ( session_id() == '' ) {
 }
 
 // load the main controller
-require_once( JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'controller.php' );
+require_once( JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'controller.php' );
 
 // load the main model
-require_once( JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'models'.DS.'default.php' );
+require_once( JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'models'.'/'.'default.php' );
 
 // load the main view
-require_once( JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'views'.DS.'default'.DS.'view.html.php' );
+require_once( JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'views'.'/'.'default'.'/'.'view.html.php' );
 
 // include the table directory
-JTable::addIncludePath(JPATH_ROOT.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'tables');
+JTable::addIncludePath(JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'tables');
 
 // get the current view
 $view = JRequest::getCmd('view', 'message');
@@ -48,7 +48,7 @@ if(strlen(trim($task)) == 0) {
 
 // if a section is selected the coresponding controller is loaded
 if (strlen($sTask) > 0){
-	require_once( JPATH_COMPONENT.DS.'controllers'.DS.$sTask.'.php' );
+	require_once( JPATH_COMPONENT.'/'.'controllers'.'/'.$sTask.'.php' );
 }
 $controllerName = 'AiContactSafeController'.$sTask;
 

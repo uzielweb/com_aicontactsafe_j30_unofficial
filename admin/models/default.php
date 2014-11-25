@@ -659,12 +659,12 @@ class AiContactSafeModelDefault extends JModel {
 	}
 
 	function useUqField() {
-		$uq_ini = JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'uq.ini';
+		$uq_ini = JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'uq.ini';
 		return file_exists($uq_ini);
 	}
 
 	function useCcField() {
-		$cc_ini = JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'cc.ini';
+		$cc_ini = JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'cc.ini';
 		return file_exists($cc_ini);
 	}
 

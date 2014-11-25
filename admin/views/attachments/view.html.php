@@ -47,10 +47,10 @@ class AiContactSafeViewAttachments extends AiContactSafeViewDefault {
 		$this->pageNav = $model->pageNav;
 
 		// get the path to attachments upload
-		$upload_folder = str_replace('\\',DS,$this->_config_values['upload_attachments']);
-		$upload_folder = str_replace('/',DS,$upload_folder);
-		$upload_folder = str_replace('&#92;',DS,$upload_folder);
-		$this->path_upload = JPATH_ROOT.DS.$upload_folder;
+
+$upload_folder = '/'.$this->_config_values['upload_attachments'];
+
+$path_upload = JPATH_ROOT.'/'.$upload_folder;
 
 		$script = "
 			//<![CDATA[

@@ -346,7 +346,7 @@ class AiContactSafeModelProfiles extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 		// write the css code of the profile
-		$css_file = JPath::clean(JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'cssprofiles'.DS.'profile_css_'.$id.'.css');
+		$css_file = JPath::clean(JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'cssprofiles'.'/'.'profile_css_'.$id.'.css');
 		$postData['profile_css_code'] = str_replace('aiContactSafe_mainbody_1 ', 'aiContactSafe_mainbody_'.$id.' ', $postData['profile_css_code']);
 		JFile::write($css_file, $this->revert_specialchars($postData['profile_css_code']));
 
@@ -374,7 +374,7 @@ class AiContactSafeModelProfiles extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 		// write the mail template of the profile
-		$mail_file = JPath::clean(JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'mailtemplates'.DS.'mail_'.$id.'.php');
+		$mail_file = JPath::clean(JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'mailtemplates'.'/'.'mail_'.$id.'.php');
 		JFile::write($mail_file, $this->revert_specialchars($postData['mail_template']));
 
 		return true;
@@ -467,11 +467,11 @@ class AiContactSafeModelProfiles extends AiContactSafeModelDefault {
 			// import joomla clases to manage file system
 			jimport('joomla.filesystem.file');
 			foreach($profiles_ids as $pf_id){
-				$css_file = JPath::clean(JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'cssprofiles'.DS.'profile_css_'.$pf_id.'.css');
+				$css_file = JPath::clean(JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'cssprofiles'.'/'.'profile_css_'.$pf_id.'.css');
 				if (JFile::exists($css_file)) {
 					JFile::delete($css_file);
 				}
-				$mail_file = JPath::clean(JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'mailtemplates'.DS.'mail_'.$pf_id.'.php');
+				$mail_file = JPath::clean(JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'mailtemplates'.'/'.'mail_'.$pf_id.'.php');
 				if (JFile::exists($mail_file)) {
 					JFile::delete($mail_file);
 				}
@@ -488,9 +488,9 @@ class AiContactSafeModelProfiles extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
-		$css_file = JPath::clean(JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'cssprofiles'.DS.'profile_css_'.$id.'.css');
+		$css_file = JPath::clean(JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'cssprofiles'.'/'.'profile_css_'.$id.'.css');
 		if (!is_file($css_file)) {
-			$src_file = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_aicontactsafe'.DS.'views'.DS.'message'.DS.'tmpl'.DS.'profile_align_margin.css');
+			$src_file = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'views'.'/'.'message'.'/'.'tmpl'.'/'.'profile_align_margin.css');
 			JFile::copy($src_file, $css_file);
 		}
 		$css_code = JFile::read($css_file);
@@ -583,9 +583,9 @@ class AiContactSafeModelProfiles extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 		
-		$mail_file = JPath::clean(JPATH_ROOT.DS.'media'.DS.'aicontactsafe'.DS.'mailtemplates'.DS.'mail_'.$id.'.php');
+		$mail_file = JPath::clean(JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe'.'/'.'mailtemplates'.'/'.'mail_'.$id.'.php');
 		if (!is_file($mail_file)) {
-			$src_file = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_aicontactsafe'.DS.'views'.DS.'mail'.DS.'tmpl'.DS.'mail.php');
+			$src_file = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'views'.'/'.'mail'.'/'.'tmpl'.'/'.'mail.php');
 			JFile::copy($src_file, $mail_file);
 		}
 		$mail_code = JFile::read($mail_file);
@@ -604,7 +604,7 @@ class AiContactSafeModelProfiles extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 			
-		$css_file = JPATH_ROOT.DS.'components'.DS.'com_aicontactsafe'.DS.'views'.DS.'message'.DS.'tmpl'.DS.'profile_'.$css_type.'.css';
+		$css_file = JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'views'.'/'.'message'.'/'.'tmpl'.'/'.'profile_'.$css_type.'.css';
 		if (JFile::exists($css_file)) {
 			$css_code = JFile::read($css_file);
 			$css_code = str_replace('aiContactSafe_mainbody_1 ', 'aiContactSafe_mainbody_'.$id.' ', $css_code);

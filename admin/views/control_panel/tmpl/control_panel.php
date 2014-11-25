@@ -347,7 +347,7 @@ defined('_JEXEC') or die('Restricted access');
 			</td>
 			<td class="space">&nbsp;</td>
 			<td class="value">
-				<?php echo JPATH_ROOT.DS; ?><input class="textbox" type="text" name="upload_attachments" id="upload_attachments" value="<?php echo $this->upload_attachments; ?>"  />
+				<?php echo JPATH_ROOT.'/'; ?><input class="textbox" type="text" name="upload_attachments" id="upload_attachments" value="<?php echo $this->upload_attachments; ?>"  />
 			</td>
 		</tr>
 		<tr>

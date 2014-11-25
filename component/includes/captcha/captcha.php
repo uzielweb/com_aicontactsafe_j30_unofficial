@@ -118,7 +118,7 @@ class SimpleCaptcha {
 
     function __construct($config = array()) {
 
-		$folder_captcha_class = JPATH_SITE.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'captcha';
+		$folder_captcha_class = JPATH_SITE.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'captcha';
 
 		if( (int)$config['width'] > 0 ) {
 			$this->width = (int)$config['width'];
@@ -131,9 +131,9 @@ class SimpleCaptcha {
 			$this->wordsFile = null;
 		} else {
 			if (is_null($this->wordsFile)) {
-				$language_file = $folder_captcha_class.DS.'words'.DS.'en.txt';
-				if ( strlen($config['lang']) > 0 && is_file($folder_captcha_class.DS.'words'.DS.$config['lang'].'.txt') ) {
-					$language_file = $folder_captcha_class.DS.'words'.DS.$config['lang'].'.txt';
+				$language_file = $folder_captcha_class.'/'.'words'.'/'.'en.txt';
+				if ( strlen($config['lang']) > 0 && is_file($folder_captcha_class.'/'.'words'.'/'.$config['lang'].'.txt') ) {
+					$language_file = $folder_captcha_class.'/'.'words'.'/'.$config['lang'].'.txt';
 				}
 				$this->wordsFile = $language_file;
 			}
@@ -162,13 +162,13 @@ class SimpleCaptcha {
 
 		if (is_null($this->fonts)) {
 			$this->fonts = array(
-				'Antykwa'  => array('spacing' => -3, 'minSize' => 27, 'maxSize' => 30, 'font' => $folder_captcha_class.DS.'fonts'.DS.'AntykwaBold.ttf'),
-				'Candice'  => array('spacing' =>-1.5,'minSize' => 28, 'maxSize' => 31, 'font' => $folder_captcha_class.DS.'fonts'.DS.'Candice.ttf'),
-				'DingDong' => array('spacing' => -2, 'minSize' => 24, 'maxSize' => 30, 'font' => $folder_captcha_class.DS.'fonts'.DS.'Ding-DongDaddyO.ttf'),
-				'Duality'  => array('spacing' => -2, 'minSize' => 30, 'maxSize' => 38, 'font' => $folder_captcha_class.DS.'fonts'.DS.'Duality.ttf'),
-				'Jura'     => array('spacing' => -2, 'minSize' => 28, 'maxSize' => 32, 'font' => $folder_captcha_class.DS.'fonts'.DS.'Jura.ttf'),
-				'Times'    => array('spacing' => -2, 'minSize' => 28, 'maxSize' => 34, 'font' => $folder_captcha_class.DS.'fonts'.DS.'TimesNewRomanBold.ttf'),
-				'VeraSans' => array('spacing' => -1, 'minSize' => 20, 'maxSize' => 28, 'font' => $folder_captcha_class.DS.'fonts'.DS.'VeraSansBold.ttf')
+				'Antykwa'  => array('spacing' => -3, 'minSize' => 27, 'maxSize' => 30, 'font' => $folder_captcha_class.'/'.'fonts'.'/'.'AntykwaBold.ttf'),
+				'Candice'  => array('spacing' =>-1.5,'minSize' => 28, 'maxSize' => 31, 'font' => $folder_captcha_class.'/'.'fonts'.'/'.'Candice.ttf'),
+				'DingDong' => array('spacing' => -2, 'minSize' => 24, 'maxSize' => 30, 'font' => $folder_captcha_class.'/'.'fonts'.'/'.'Ding-DongDaddyO.ttf'),
+				'Duality'  => array('spacing' => -2, 'minSize' => 30, 'maxSize' => 38, 'font' => $folder_captcha_class.'/'.'fonts'.'/'.'Duality.ttf'),
+				'Jura'     => array('spacing' => -2, 'minSize' => 28, 'maxSize' => 32, 'font' => $folder_captcha_class.'/'.'fonts'.'/'.'Jura.ttf'),
+				'Times'    => array('spacing' => -2, 'minSize' => 28, 'maxSize' => 34, 'font' => $folder_captcha_class.'/'.'fonts'.'/'.'TimesNewRomanBold.ttf'),
+				'VeraSans' => array('spacing' => -1, 'minSize' => 20, 'maxSize' => 28, 'font' => $folder_captcha_class.'/'.'fonts'.'/'.'VeraSansBold.ttf')
 			);
 		}
 		if( (int)$config['align_captcha'] > 0 ) {

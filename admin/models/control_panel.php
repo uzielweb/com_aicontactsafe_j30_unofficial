@@ -270,9 +270,11 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 			JError::raiseError( 500, $db->getErrorMsg() );
 		}
 		// make sure the folder exists
-		$att_folder = str_replace('/',DS,$upload_attachments);
-		$att_folder = str_replace('&#92;',DS,$att_folder);
-		$att_folder = JPATH_ROOT.DS.$att_folder;
+
+            
+		$att_folder = '/'.$upload_attachments);
+
+		$att_folder = JPATH_ROOT.'/'.$att_folder;
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.folder');
 		if (!JFolder::exists($att_folder)) {
@@ -281,12 +283,12 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 			// import joomla clases to manage file system
 			jimport('joomla.filesystem.file');
 
-			$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'index.html');
-			$dest = JPath::clean($att_folder.DS.'index.html');
+			$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'index.html');
+			$dest = JPath::clean($att_folder.'/'.'index.html');
 			JFile::copy($src, $dest);
 
-			$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'htaccess'.DS.'.htaccess');
-			$dest = JPath::clean($att_folder.DS.'.htaccess');
+			$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'htaccess'.'/'.'.htaccess');
+			$dest = JPath::clean($att_folder.'/'.'.htaccess');
 			JFile::copy($src, $dest);
 		}
 
@@ -449,7 +451,7 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		jimport('joomla.filesystem.folder');
 
 		// delete the folder containing the files in the media folder
-		$aicontactsafe_media_folder = JPATH_ROOT.DS.'media'.DS.'aicontactsafe';
+		$aicontactsafe_media_folder = JPATH_ROOT.'/'.'media'.'/'.'aicontactsafe';
 		JFolder::delete($aicontactsafe_media_folder);
 
 		// uninstall aiContactSafeModule
@@ -477,11 +479,11 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
-		$artio = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext');
+		$artio = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext');
 		if (is_dir($artio)) {
 			$return = 1;
-			$com_aicontactsafe_php = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext'.DS.'com_aicontactsafe.php');
-			$com_aicontactsafe_xml = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext'.DS.'com_aicontactsafe.xml');
+			$com_aicontactsafe_php = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext'.'/'.'com_aicontactsafe.php');
+			$com_aicontactsafe_xml = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext'.'/'.'com_aicontactsafe.xml');
 			if (is_file($com_aicontactsafe_php) && is_file($com_aicontactsafe_xml)) {
 				$return = 2;
 			}
@@ -501,12 +503,12 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
-		$contentelements = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements');
+		$contentelements = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements');
 		if (is_dir($contentelements)) {
 			$return = 1;
-			$aicontactsafe_contactinformations = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_contactinformations.xml');
-			$aicontactsafe_fields = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_fields.xml');
-			$aicontactsafe_profiles = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_profiles.xml');
+			$aicontactsafe_contactinformations = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_contactinformations.xml');
+			$aicontactsafe_fields = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_fields.xml');
+			$aicontactsafe_profiles = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_profiles.xml');
 			if (is_file($aicontactsafe_contactinformations) && is_file($aicontactsafe_fields) && is_file($aicontactsafe_profiles)) {
 				$return = 2;
 			}
@@ -526,12 +528,12 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
-		$contentelements = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements');
+		$contentelements = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements');
 		if (is_dir($contentelements)) {
 			$return = 1;
-			$aicontactsafe_contactinformations = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_contactinformations.xml');
-			$aicontactsafe_fields = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_fields.xml');
-			$aicontactsafe_profiles = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_profiles.xml');
+			$aicontactsafe_contactinformations = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_contactinformations.xml');
+			$aicontactsafe_fields = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_fields.xml');
+			$aicontactsafe_profiles = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_profiles.xml');
 			if (is_file($aicontactsafe_contactinformations) && is_file($aicontactsafe_fields) && is_file($aicontactsafe_profiles)) {
 				$return = 2;
 			}
@@ -545,11 +547,11 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'artio'.DS.'com_aicontactsafe.php');
-		$dest = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext'.DS.'com_aicontactsafe.php');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'artio'.'/'.'com_aicontactsafe.php');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext'.'/'.'com_aicontactsafe.php');
 		JFile::copy($src, $dest);
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'artio'.DS.'com_aicontactsafe.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext'.DS.'com_aicontactsafe.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'artio'.'/'.'com_aicontactsafe.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext'.'/'.'com_aicontactsafe.xml');
 		JFile::copy($src, $dest);
 	}
 
@@ -558,11 +560,11 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
-		$com_aicontactsafe = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext'.DS.'com_aicontactsafe.php');
+		$com_aicontactsafe = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext'.'/'.'com_aicontactsafe.php');
 		if (is_file($com_aicontactsafe)) {
 			JFile::delete($com_aicontactsafe);
 		}
-		$com_aicontactsafe = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_sef'.DS.'sef_ext'.DS.'com_aicontactsafe.xml');
+		$com_aicontactsafe = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_sef'.'/'.'sef_ext'.'/'.'com_aicontactsafe.xml');
 		if (is_file($com_aicontactsafe)) {
 			JFile::delete($com_aicontactsafe);
 		}
@@ -573,14 +575,14 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'joomfish'.DS.'aicontactsafe_contactinformations.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_contactinformations.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'joomfish'.'/'.'aicontactsafe_contactinformations.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_contactinformations.xml');
 		JFile::copy($src, $dest);
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'joomfish'.DS.'aicontactsafe_fields.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_fields.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'joomfish'.'/'.'aicontactsafe_fields.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_fields.xml');
 		JFile::copy($src, $dest);
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'joomfish'.DS.'aicontactsafe_profiles.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_profiles.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'joomfish'.'/'.'aicontactsafe_profiles.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_profiles.xml');
 		JFile::copy($src, $dest);
 	}
 
@@ -589,15 +591,15 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
-		$aicontactsafe_contactinformations = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_contactinformations.xml');
+		$aicontactsafe_contactinformations = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_contactinformations.xml');
 		if (is_file($aicontactsafe_contactinformations)) {
 			JFile::delete($aicontactsafe_contactinformations);
 		}
-		$aicontactsafe_fields = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_fields.xml');
+		$aicontactsafe_fields = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_fields.xml');
 		if (is_file($aicontactsafe_fields)) {
 			JFile::delete($aicontactsafe_fields);
 		}
-		$aicontactsafe_profiles = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_joomfish'.DS.'contentelements'.DS.'aicontactsafe_profiles.xml');
+		$aicontactsafe_profiles = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_joomfish'.'/'.'contentelements'.'/'.'aicontactsafe_profiles.xml');
 		if (is_file($aicontactsafe_profiles)) {
 			JFile::delete($aicontactsafe_profiles);
 		}
@@ -608,14 +610,14 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'falang'.DS.'aicontactsafe_contactinformations.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_contactinformations.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'falang'.'/'.'aicontactsafe_contactinformations.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_contactinformations.xml');
 		JFile::copy($src, $dest);
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'falang'.DS.'aicontactsafe_fields.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_fields.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'falang'.'/'.'aicontactsafe_fields.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_fields.xml');
 		JFile::copy($src, $dest);
-		$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'falang'.DS.'aicontactsafe_profiles.xml');
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_profiles.xml');
+		$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'falang'.'/'.'aicontactsafe_profiles.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_profiles.xml');
 		JFile::copy($src, $dest);
 	}
 
@@ -624,15 +626,15 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
-		$aicontactsafe_contactinformations = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_contactinformations.xml');
+		$aicontactsafe_contactinformations = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_contactinformations.xml');
 		if (is_file($aicontactsafe_contactinformations)) {
 			JFile::delete($aicontactsafe_contactinformations);
 		}
-		$aicontactsafe_fields = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_fields.xml');
+		$aicontactsafe_fields = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_fields.xml');
 		if (is_file($aicontactsafe_fields)) {
 			JFile::delete($aicontactsafe_fields);
 		}
-		$aicontactsafe_profiles = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_falang'.DS.'contentelements'.DS.'aicontactsafe_profiles.xml');
+		$aicontactsafe_profiles = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_falang'.'/'.'contentelements'.'/'.'aicontactsafe_profiles.xml');
 		if (is_file($aicontactsafe_profiles)) {
 			JFile::delete($aicontactsafe_profiles);
 		}
@@ -653,7 +655,7 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 
 		$rspTemplates = array();
 		foreach($templates as $template) {
-			$indexFile = JPATH_ROOT.DS.'templates'.DS.$template.DS.'index.php';
+			$indexFile = JPATH_ROOT.'/'.'templates'.'/'.$template.'/'.'index.php';
 			$fileTemplate = JFile::read($indexFile);
 			$cntMessageSection = substr_count($fileTemplate, '<jdoc:include type="message" />');
 			if ( $cntMessageSection == 0 ) {
@@ -672,12 +674,12 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		$response .= '<div>'.JText::_('COM_AICONTACTSAFE_ADMINISTRATOR').'</div>';
 
 		// initialize the language class
-		$lang = JFactory::getLanguage(JPATH_ROOT.DS.'administrator');
+		$lang = JFactory::getLanguage(JPATH_ROOT.'/'.'administrator');
 		// check the administrator languages
 		$languages = $lang->getKnownLanguages();
 		foreach($languages as $lg) {
-			$lang_file = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'language'.DS.$lg['tag'].DS.$lg['tag'].'.com_aicontactsafe.ini');
-			$source_file = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'languages'.DS.$lg['tag'].'.com_aicontactsafe.ini');
+			$lang_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'language'.'/'.$lg['tag'].'/'.$lg['tag'].'.com_aicontactsafe.ini');
+			$source_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'languages'.'/'.$lg['tag'].'.com_aicontactsafe.ini');
 			if (is_file($lang_file)) {
 				if (is_file($source_file)) {
 					JFile::delete($lang_file);
@@ -694,8 +696,8 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 					$response .= '<div>'.'&nbsp;&nbsp;&nbsp;&nbsp;'.$lg['backwardlang'].'&nbsp;'.JText::_('COM_AICONTACTSAFE_NOT_INCLUDED_IN_AICONTACTSAFE_AND_NOT_INSTALLED_IN_JOOMLA').'</div>';
 				}
 			}
-			$lang_file = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'language'.DS.$lg['tag'].DS.$lg['tag'].'.com_aicontactsafe.menu.ini');
-			$source_file = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'languages'.DS.$lg['tag'].'.com_aicontactsafe.menu.ini');
+			$lang_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'language'.'/'.$lg['tag'].'/'.$lg['tag'].'.com_aicontactsafe.menu.ini');
+			$source_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'languages'.'/'.$lg['tag'].'.com_aicontactsafe.menu.ini');
 			if (is_file($lang_file)) {
 				if (is_file($source_file)) {
 					JFile::delete($lang_file);
@@ -712,8 +714,8 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 					$response .= '<div>'.'&nbsp;&nbsp;&nbsp;&nbsp;'.$lg['backwardlang'].'&nbsp;menu&nbsp;'.JText::_('COM_AICONTACTSAFE_NOT_INCLUDED_IN_AICONTACTSAFE_AND_NOT_INSTALLED_IN_JOOMLA').'</div>';
 				}
 			}
-			$lang_file = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'language'.DS.$lg['tag'].DS.$lg['tag'].'.com_aicontactsafe.sys.ini');
-			$source_file = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'languages'.DS.$lg['tag'].'.com_aicontactsafe.sys.ini');
+			$lang_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'language'.'/'.$lg['tag'].'/'.$lg['tag'].'.com_aicontactsafe.sys.ini');
+			$source_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'languages'.'/'.$lg['tag'].'.com_aicontactsafe.sys.ini');
 			if (is_file($lang_file)) {
 				if (is_file($source_file)) {
 					JFile::delete($lang_file);
@@ -737,8 +739,8 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// check the site languages
 		$languages = $lang->getKnownLanguages(JPATH_ROOT);
 		foreach($languages as $lg) {
-			$lang_file = JPath::clean(JPATH_ROOT.DS.'language'.DS.$lg['tag'].DS.$lg['tag'].'.com_aicontactsafe.ini');
-			$source_file = JPath::clean(JPATH_ROOT.DS.'components'.DS.'com_aicontactsafe'.DS.'languages'.DS.$lg['tag'].'.com_aicontactsafe.ini');
+			$lang_file = JPath::clean(JPATH_ROOT.'/'.'language'.'/'.$lg['tag'].'/'.$lg['tag'].'.com_aicontactsafe.ini');
+			$source_file = JPath::clean(JPATH_ROOT.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'languages'.'/'.$lg['tag'].'.com_aicontactsafe.ini');
 			if (is_file($lang_file)) {
 				if (is_file($source_file)) {
 					JFile::delete($lang_file);
@@ -764,13 +766,13 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 	// function to check if aiContactSafeModule is installed
 	function checkAiContactSafeModule() {
 		$return = 0;
-		$xml_file = JPath::clean(JPATH_ROOT.DS.'modules'.DS.'mod_aicontactsafe'.DS.'mod_aicontactsafe.xml');
+		$xml_file = JPath::clean(JPATH_ROOT.'/'.'modules'.'/'.'mod_aicontactsafe'.'/'.'mod_aicontactsafe.xml');
 		if (is_file($xml_file)) {
 			$xml = JFactory::getXMLParser( 'simple' );
 			$xml->loadFile( $xml_file );
 			$version = $xml->document->getElementByPath( 'version' );
 			$installed_version = $version->data();
-			$xml_file = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'mod_aicontactsafe'.DS.'mod_aicontactsafe.xml');
+			$xml_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'mod_aicontactsafe'.'/'.'mod_aicontactsafe.xml');
 			if (is_file($xml_file)) {
 				$xml = JFactory::getXMLParser( 'simple' );
 				$xml->loadFile( $xml_file );
@@ -790,7 +792,7 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 	function installAiContactSafeModule() {
 		jimport('joomla.installer.installer');
 		$installer = JInstaller::getInstance();
-		$installed = $installer->install(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'mod_aicontactsafe');
+		$installed = $installer->install(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'mod_aicontactsafe');
 		if ($installed) {
 			// initialize the database
 			$db = JFactory::getDBO();
@@ -827,15 +829,15 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		// import joomla clases to manage file system
 		jimport('joomla.filesystem.file');
 
-		$xml_file_current = JPath::clean(JPATH_ROOT.DS.'modules'.DS.'mod_aicontactsafe'.DS.'mod_aicontactsafe.xml');
-		$xml_file_last = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'mod_aicontactsafe'.DS.'mod_aicontactsafe.xml');
+		$xml_file_current = JPath::clean(JPATH_ROOT.'/'.'modules'.'/'.'mod_aicontactsafe'.'/'.'mod_aicontactsafe.xml');
+		$xml_file_last = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'mod_aicontactsafe'.'/'.'mod_aicontactsafe.xml');
 		if (is_file($xml_file_current)) {
 			JFile::delete($xml_file_current);
 		}
 		JFile::copy($xml_file_last, $xml_file_current);
 
-		$php_file_current = JPath::clean(JPATH_ROOT.DS.'modules'.DS.'mod_aicontactsafe'.DS.'mod_aicontactsafe.php');
-		$php_file_last = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'mod_aicontactsafe'.DS.'mod_aicontactsafe.php');
+		$php_file_current = JPath::clean(JPATH_ROOT.'/'.'modules'.'/'.'mod_aicontactsafe'.'/'.'mod_aicontactsafe.php');
+		$php_file_last = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'mod_aicontactsafe'.'/'.'mod_aicontactsafe.php');
 		if (is_file($php_file_current)) {
 			JFile::delete($php_file_current);
 		}
@@ -848,16 +850,16 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 	function checkAiContactSafeForm() {
 		$return = 0;
 		if(version_compare(JVERSION, '1.6.0', 'ge')) {
-			$xml_file = JPath::clean(JPATH_ROOT.DS.'plugins'.DS.'content'.DS.'aicontactsafeform'.DS.'aicontactsafeform.xml');
+			$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafeform'.'/'.'aicontactsafeform.xml');
 		} else {
-			$xml_file = JPath::clean(JPATH_ROOT.DS.'plugins'.DS.'content'.DS.'aicontactsafeform.xml');
+			$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafeform.xml');
 		}
 		if (is_file($xml_file)) {
 			$xml = JFactory::getXMLParser( 'simple' );
 			$xml->loadFile( $xml_file );
 			$version = $xml->document->getElementByPath( 'version' );
 			$installed_version = $version->data();
-			$xml_file = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafeform'.DS.'aicontactsafeform.xml');
+			$xml_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafeform'.'/'.'aicontactsafeform.xml');
 			if (is_file($xml_file)) {
 				$xml = JFactory::getXMLParser( 'simple' );
 				$xml->loadFile( $xml_file );
@@ -879,16 +881,16 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		jimport('joomla.filesystem.file');
 		// copy the correct xml file
 		if(version_compare(JVERSION, '1.6.0', 'ge')) {
-			$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafeform'.DS.'xml'.DS.'aicontactsafeform_1_6.ini');
+			$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafeform'.'/'.'xml'.'/'.'aicontactsafeform_1_6.ini');
 		} else {
-			$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafeform'.DS.'xml'.DS.'aicontactsafeform_1_5.ini');
+			$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafeform'.'/'.'xml'.'/'.'aicontactsafeform_1_5.ini');
 		}
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafeform'.DS.'aicontactsafeform.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafeform'.'/'.'aicontactsafeform.xml');
 		JFile::copy($src, $dest);
 		// import the installer
 		jimport('joomla.installer.installer');
 		$installer = JInstaller::getInstance();
-		$installed = $installer->install(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafeform');
+		$installed = $installer->install(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafeform');
 		if ($installed) {
 			// initialize the database
 			$db = JFactory::getDBO();
@@ -938,16 +940,16 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 	function checkAiContactSafeLink() {
 		$return = 0;
 		if(version_compare(JVERSION, '1.6.0', 'ge')) {
-			$xml_file = JPath::clean(JPATH_ROOT.DS.'plugins'.DS.'content'.DS.'aicontactsafelink'.DS.'aicontactsafelink.xml');
+			$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafelink'.'/'.'aicontactsafelink.xml');
 		} else {
-			$xml_file = JPath::clean(JPATH_ROOT.DS.'plugins'.DS.'content'.DS.'aicontactsafelink.xml');
+			$xml_file = JPath::clean(JPATH_ROOT.'/'.'plugins'.'/'.'content'.'/'.'aicontactsafelink.xml');
 		}
 		if (is_file($xml_file)) {
 			$xml = JFactory::getXMLParser( 'simple' );
 			$xml->loadFile( $xml_file );
 			$version = $xml->document->getElementByPath( 'version' );
 			$installed_version = $version->data();
-			$xml_file = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafelink'.DS.'aicontactsafelink.xml');
+			$xml_file = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafelink'.'/'.'aicontactsafelink.xml');
 			if (is_file($xml_file)) {
 				$xml = JFactory::getXMLParser( 'simple' );
 				$xml->loadFile( $xml_file );
@@ -969,16 +971,16 @@ class AiContactSafeModelControl_panel extends AiContactSafeModelDefault {
 		jimport('joomla.filesystem.file');
 		// copy the correct xml file
 		if(version_compare(JVERSION, '1.6.0', 'ge')) {
-			$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafelink'.DS.'xml'.DS.'aicontactsafelink_1_6.ini');
+			$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafelink'.'/'.'xml'.'/'.'aicontactsafelink_1_6.ini');
 		} else {
-			$src = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafelink'.DS.'xml'.DS.'aicontactsafelink_1_5.ini');
+			$src = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafelink'.'/'.'xml'.'/'.'aicontactsafelink_1_5.ini');
 		}
-		$dest = JPath::clean(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafelink'.DS.'aicontactsafelink.xml');
+		$dest = JPath::clean(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafelink'.'/'.'aicontactsafelink.xml');
 		JFile::copy($src, $dest);
 		// import the installer
 		jimport('joomla.installer.installer');
 		$installer = JInstaller::getInstance();
-		$installed = $installer->install(JPATH_ROOT.DS.'administrator'.DS.'components'.DS.'com_aicontactsafe'.DS.'includes'.DS.'plg_aicontactsafelink');
+		$installed = $installer->install(JPATH_ROOT.'/'.'administrator'.'/'.'components'.'/'.'com_aicontactsafe'.'/'.'includes'.'/'.'plg_aicontactsafelink');
 		if ($installed) {
 			// initialize the database
 			$db = JFactory::getDBO();
