@@ -135,7 +135,7 @@ if (array_key_exists('Itemid', $parameters)) {
 	$Itemid = (int)$parameters['Itemid'];
 }
 
-$postData[JUtility::getToken()] = 1;
+$postData[JSession::getFormToken()] = 1;
 $session = JFactory::getSession();
 $session->set( 'postData:message_' . $r_id, $postData );
 $session->set( 'parameters:message_' . $r_id, $postData );
