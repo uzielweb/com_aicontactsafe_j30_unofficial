@@ -129,8 +129,8 @@ class AiContactSafeModelFields extends AiContactSafeModelDefault {
 				// modify the name
 				$field_to_duplicate->name = $this->checkDuplicatedName($field_to_duplicate->name);
 				// reset the date added and modified
-				$field_to_duplicate->date_added = $datenow->toMySQL();
-				$field_to_duplicate->last_update = $datenow->toMySQL();
+				$field_to_duplicate->date_added = $datenow->toSQL();
+				$field_to_duplicate->last_update = $datenow->toSQL();
 				// duplicate the field
 				$db->insertObject('#__aicontactsafe_fields', $field_to_duplicate);
 			}

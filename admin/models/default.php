@@ -158,12 +158,12 @@ class AiContactSafeModelDefault extends JModelLegacy {
 		switch(true) {
 			case array_key_exists('last_task', $postData) && $postData['last_task'] == 'add':
 				$datenow = JFactory::getDate();
-				$postData['date_added'] = $datenow->toMySQL();
-				$postData['last_update'] = $datenow->toMySQL();
+				$postData['date_added'] = $datenow->toSql();
+				$postData['last_update'] = $datenow->toSql();
 				break;
 			case array_key_exists('last_task', $postData) && $postData['last_task'] == 'edit':
 				$datenow = JFactory::getDate();
-				$postData['last_update'] = $datenow->toMySQL();
+				$postData['last_update'] = $datenow->toSql();
 				break;
 		}
 

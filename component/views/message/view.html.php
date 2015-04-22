@@ -734,7 +734,7 @@ class AiContactSafeViewMessage extends AiContactSafeViewDefault {
 						$field->html_tag .= '</div>';
 					}
 					$field->html_tag .= '<input type="hidden" name="' . $field->name . '_attachment_id" id="' . $field->name . '_attachment_id" value="' . ((is_array($postData) && array_key_exists($field->name.'_attachment_id',$postData))?$postData[$field->name.'_attachment_id']:'') . '" />';
-					$field->html_tag .= '<div id="wait_upload_'.$this->profile->id.'_file_'.$field->name.'" style="display:none" ><img id="imgLoading_' . $field->name . '" style="border-width:0;" alt=" " src="'.$loadImage.'" />&nbsp;&nbsp;'.JText::_('COM_AICONTACTSAFE_PLEASE_WAIT').'</div>';
+					$field->html_tag .= '<div id="wait_upload_'.$this->profile->id.'_file_'.$field->name.'" style="display:none" ><img id="imgLoading_' . $field->name . '" style="border-width:0;" alt="\A0" src="'.$loadImage.'" />&nbsp;&nbsp;'.JText::_('COM_AICONTACTSAFE_PLEASE_WAIT').'</div>';
 					$field->html_tag .= '<iframe id="iframe_upload_file_' . $this->profile->id.'_file_'.$field->name.'" name="iframe_upload_file_' . $this->profile->id.'_file_'.$field->name.'" src="'.JUri::root().'components/com_aicontactsafe/index.html" style="width:0;height:0;border:0px solid #FFF;display:none;"></iframe>';
 					break;
 				case 'NO' :

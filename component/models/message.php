@@ -152,8 +152,8 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 				$newFile->name = '';
 				$newFile->r_id = $r_id;
 				$datenow = JFactory::getDate();
-				$newFile->date_added = $datenow->toMySQL();
-				$newFile->last_update = $datenow->toMySQL();
+				$newFile->date_added = $datenow->toSQL();
+				$newFile->last_update = $datenow->toSQL();
 				$newFile->published = 1;
 				$newFile->checked_out = 0;
 				$newFile->checked_out_time = '0000-00-00';
@@ -665,8 +665,8 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 		$postData = parent::checkBeforeWrite($postData);
 
 		$datenow = JFactory::getDate();
-		$postData['date_added'] = $datenow->toMySQL();
-		$postData['last_update'] = $datenow->toMySQL();
+		$postData['date_added'] = $datenow->toSQL();
+		$postData['last_update'] = $datenow->toSQL();
 
 		return $postData;
 	}
@@ -1210,8 +1210,8 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 					$fieldRow->message_id = $dataRow->id;
 					$fieldRow->field_value = $field->value_to_save;
 					$datenow = JFactory::getDate();
-					$fieldRow->date_added = $datenow->toMySQL();
-					$fieldRow->last_update = $datenow->toMySQL();
+					$fieldRow->date_added = $datenow->toSQL();
+					$fieldRow->last_update = $datenow->toSQL();
 					$fieldRow->published = 1;
 					$fieldRow->checked_out = 0;
 					$fieldRow->checked_out_time = '0000-00-00';
@@ -1260,7 +1260,8 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 					// clean email address
 					$email_recipient = JMailHelper::cleanAddress($email_recipient);
 					// send the message
-					$isOK = JUtility::sendMail($from, $fromname, $email_recipient, $subject, $body, $mode, $cc, $bcc, $file_attachments, $replyto, $replytoname);
+          $mail 	= JMail::getInstance();
+					$isOK = $mail->sendMail($from, $fromname, $email_recipient, $subject, $body, $mode, $cc, $bcc, $file_attachments, $replyto, $replytoname);
 				}
 			}
 		} else {
@@ -1503,7 +1504,8 @@ class AiContactSafeModelMessage extends AiContactSafeModelDefault {
 			$subject = JText::_('COM_AICONTACTSAFE_IP_AUTOMATICALLY_BLOCKED');
 			$body = JText::_('COM_AICONTACTSAFE_IP_AUTOMATICALLY_BLOCKED') . '<br />' . $ips_list . '<br />';
 			$mode = true;
-			$isOK = JUtility::sendMail($from, $fromname, $email_recipient, $subject, $body, $mode);
+			$mail 	= JMail::getInstance();
+			$isOK = $mail->sendMail($from, $fromname, $email_recipient, $subject, $body, $mode);
 		} else {
 			$this->_app->_session->set( 'isOK:' . $this->_sTask, false );
 			JError::raiseError( 500, $db->getErrorMsg() );
