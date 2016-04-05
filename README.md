@@ -1,5 +1,8 @@
 # AI Contact Safe for Joomla 3 Unofficial
-This is a "try to update" an old version of Ai Contact Safe to be ported from Joomla 2.5 to Joomla.3.xx compatibility
+
+** Actual Version : 3.0.stable.unofficial
+
+This is a Fork for Update from an old version of Ai Contact Safe to be ported from Joomla 2.5 to Joomla.3.xx compatibility
 
 Please, see the page in Github Pages - http://uzielweb.github.io/com_aicontactsafe_j30_unofficial
 
