@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `#__aicontactsafe_config` (
 
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
-INSERT INTO `#__aicontactsafe_config` (`id`, `config_key`, `config_value`) VALUES
+INSERT IGNORE INTO `#__aicontactsafe_config` (`id`, `config_key`, `config_value`) VALUES
 (1, 'use_css_backend', '1'),
 (2, 'use_SqueezeBox', '0'),
 (3, 'highlight_errors', '1'),
